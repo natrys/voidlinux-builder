@@ -1,6 +1,6 @@
 # Template file for 'factor'
 pkgname=factor
-version=20200724
+version=20200906
 revision=1
 _commit=9c60c202e9f0b5913876bc121a5714ec768458a3
 wrksrc=${pkgname}-${_commit}
