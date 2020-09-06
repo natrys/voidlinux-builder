@@ -1,0 +1,13 @@
+# Template file for 'oha'
+pkgname=oha
+version=0.4.1
+revision=1
+build_style=cargo
+hostmakedepends="pkg-config"
+makedepends="libressl-devel"
+short_desc="HTTP load generator with TUI animation"
+maintainer="Imran Khan <imrankhan@teknik.io>"
+license="MIT"
+homepage="https://github.com/hatoo/oha"
+distfiles="https://github.com/hatoo/oha/archive/v${version}.tar.gz"
+checksum=badbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadb

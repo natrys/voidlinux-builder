@@ -1,0 +1,14 @@
+# Template file for 'mcron'
+pkgname=mcron
+version=1.1.1
+revision=1
+build_style=gnu-configure
+hostmakedepends="pkg-config guile"
+makedepends="guile-devel gc-devel"
+depends="guile"
+short_desc="A replacement for Vixie cron written in pure Guile"
+maintainer="Imran Khan <imrankhan@teknik.io>"
+license="GPL-3"
+homepage="https://www.gnu.org/software/mcron/"
+distfiles="https://ftp.gnu.org/gnu/mcron/mcron-${version}.tar.gz"
+checksum=a452eb83fda0e324305154b976e8e635105f8d1d55371fdd0fc65793cd6535c5

@@ -1,0 +1,14 @@
+# Template file for 'smalltalk'
+pkgname=smalltalk
+version=3.2.91
+revision=1
+build_style=configure
+configure_args="--prefix=/usr --libexecdir=/usr/lib/smalltalk --with-imagedir=/var/lib/smalltalk --with-readline --with-system-libffi --with-system-libsigsegv"
+hostmakedepends="pkg-config zip"
+makedepends="libsigsegv-devel libffi-devel libltdl-devel gmp-devel readline-devel gnutls-devel sqlite-devel"
+short_desc="GNU Smalltalk interpreter and libraries"
+maintainer="Imran Khan <imrankhan@teknik.io>"
+license="GPL"
+homepage="http://smalltalk.gnu.org/"
+distfiles="ftp://alpha.gnu.org/gnu/smalltalk/smalltalk-${version}.tar.xz"
+checksum=00628239fcd7c76a3a591cee2df5919ca632387594082af1f29c85bf588162fd

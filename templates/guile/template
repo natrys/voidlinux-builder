@@ -1,0 +1,41 @@
+# Template file for 'guile'
+pkgname=guile
+version=2.2.6
+revision=1
+build_style=gnu-configure
+configure_args="--disable-static --disable-error-on-warning"
+hostmakedepends="pkg-config"
+makedepends="gc-devel gmp-devel libatomic_ops-devel libffi-devel libltdl-devel
+ libunistring-devel readline-devel"
+short_desc="A portable, embeddable Scheme implementation written in C"
+maintainer="Juan RP <xtraeme@voidlinux.org>"
+license="GPL-3.0-or-later, LGPL-3.0-or-later"
+homepage="http://www.gnu.org/software/${pkgname}"
+distfiles="http://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${version}.tar.gz"
+checksum=08c0e7487777740b61cdd97949b69e8a5e2997d8c2fe6c7e175819eb18444506
+subpackages="libguile guile-devel"
+
+if [ "$CROSS_BUILD" ]; then
+	# Need host guile to cross compile
+	hostmakedepends+=" guile"
+fi
+
+libguile_package() {
+	short_desc+=" - runtime library"
+	pkg_install() {
+		vmove "usr/lib/*.so.*"
+		vmove "usr/lib/guile/2.2/extensions/*.so"
+	}
+}
+
+guile-devel_package() {
+	short_desc+=" - development files"
+	depends="gmp-devel gc-devel guile>=${version}_${revision}"
+	pkg_install() {
+		vmove usr/bin/guile-config
+		vmove usr/include
+		vmove usr/share/aclocal
+		vmove usr/lib/pkgconfig
+		vmove "usr/lib/*.so"
+	}
+}

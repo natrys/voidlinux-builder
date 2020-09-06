@@ -1,0 +1,20 @@
+# Template file for 'cutechess'
+pkgname=cutechess
+version=1.0.0
+wrksrc=${pkgname}-gui-${version}
+revision=1
+build_style=qmake
+makedepends="qt5-devel qt5-svg-devel"
+short_desc="A GUI, CLI and Library for playing chess"
+maintainer="Imran Khan <imrankhan@teknik.io>"
+license="GPL-3.0-or-later, MIT"
+homepage="https://github.com/cutechess/cutechess"
+distfiles="https://github.com/cutechess/cutechess/archive/gui-${version}.tar.gz"
+checksum=b85967c225e70eed88c1b64d42542bdb21c8f3f52fd17765200073e390aaba04
+
+do_install() {
+  vbin projects/cli/cutechess-cli
+  vbin projects/gui/cutechess
+  vinstall dist/linux/cutechess.desktop 644 usr/share/applications
+  vman docs/cutechess-cli.6
+}
