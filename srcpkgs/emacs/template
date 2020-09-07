@@ -1,8 +1,8 @@
 pkgname=emacs
 version=28.0.50
-_commit=2f797124c303627a4543354eb18323e1e22e578e
+_commit=5312e56d43c82ab5e1c3fe407e24bdf1014e4313
 wrksrc=${pkgname}-${_commit}
-revision=6
+revision=7
 build_style=gnu-configure
 configure_args="--with-file-notification=inotify --with-modules
  $(vopt_with jpeg) $(vopt_with tiff) $(vopt_with gif) $(vopt_with png)
@@ -25,8 +25,7 @@ maintainer="Leah Neukirchen <leah@vuxu.org>"
 license="GPL-3.0-or-later"
 homepage="http://www.gnu.org/software/emacs/"
 distfiles="https://github.com/emacs-mirror/emacs/archive/${_commit}.tar.gz"
-#distfiles="http://ftp.gnu.org/gnu/emacs/emacs-26.2.tar.gz"
-checksum=42f243c8a284cf20dae65fb51fc129bb82f08a0accf6dbf5165494cef16cc829
+checksum=267c0893dbbd7c7491051108259c4081e9e6c2b327119340afce642cfcc2eeed
 replaces="emacs>=0"
 nocross=yes
 nopie=yes
