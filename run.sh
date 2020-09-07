@@ -1,7 +1,7 @@
 #!/bin/sh
 
 say() {
-  /bin/echo -e '\x1b[32m$@\x1b[0m'
+  /bin/echo -e "\x1b[32m$@\x1b[0m"
 }
 
 cd $GITHUB_WORKSPACE
@@ -41,7 +41,7 @@ cd void/
 cd ../
 
 git diff --name-only HEAD^ HEAD | \
-  grep ^templates/ | perl -pe 's|templates/(.*?)/.*$|\1|' | \
+  grep ^srcpkgs/ | perl -pe 's|srcpkgs/(.*?)/.*$|\1|' | \
     sort | uniq > /tmp/packages
 
 say "These packages will be built:"

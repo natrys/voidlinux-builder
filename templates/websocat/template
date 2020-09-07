@@ -7,7 +7,7 @@ short_desc="Command-line client for WebSockets"
 maintainer="Imran Khan <imrankhan@teknik.io>"
 license="MIT"
 homepage="https://github.com/vi/websocat"
-distfiles="${homepage}/archive/v${version}.tar.gz"
+distfiles="https://github.com/vi/websocat/archive/v${version}.tar.gz"
 checksum=bf4efd28da077856ddb6ad8d05a4c9419c505825512cc9e47a06a63793694eb8
 
 post_install() {
