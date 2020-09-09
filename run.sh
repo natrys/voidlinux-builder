@@ -4,10 +4,7 @@ say() {
   /bin/echo -e "\x1b[32m$@\x1b[0m"
 }
 
-cd $GITHUB_WORKSPACE
-
 BOOTSTRAP=x86_64
-
 . etc/conf
 
 if [ "$BOOTSTRAP" != "$ARCH" ]; then
@@ -19,7 +16,15 @@ if [ -r /proc/cpuinfo ]; then
         NPROCS=$(grep ^proc /proc/cpuinfo|wc -l)
 fi
 
+
+cd $GITHUB_WORKSPACE
+
 DOCKER_NAME=${DOCKER_NAME:-void}
+grep -o 'DOCKER_BASE.*' void/.travis.yml > /tmp/docker_masterdir
+grep -o 'TAG.*' void/.travis.yml | sed -e 's/^TAG/DOCKER_TAG/' >> /tmp/docker_masterdir
+. /tmp/docker_masterdir
+rm /tmp/docker_masterdir
+
 
 /bin/echo -e "\x1b[32mPulling docker image $DOCKER_BASE-$BOOTSTRAP:$TAG...\x1b[0m"
 docker pull $DOCKER_BASE-$BOOTSTRAP:$DOCKER_TAG

@@ -1,4 +1,1 @@
 ARCH=x86_64
-
-DOCKER_BASE=voidlinux/masterdir
-DOCKER_TAG=20200607RC01
