@@ -8,7 +8,7 @@ makedepends="check-devel libXinerama-devel librsvg-devel
  libxkbcommon-devel pango-devel startup-notification-devel
  xcb-util-wm-devel xcb-util-xrm-devel"
 short_desc="Window switcher, run dialog and dmenu replacement"
-maintainer="Dave Davenport <qball@gmpclient.org>"
+maintainer="Imran Khan <imrankhan@teknik.io>"
 license="MIT"
 homepage="https://github.com/davatorium/rofi"
 distfiles="https://github.com/davatorium/rofi/releases/download/${version}/rofi-${version}.tar.xz"
