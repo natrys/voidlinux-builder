@@ -1,0 +1,19 @@
+# Template file for 'httpstat'
+pkgname=httpstat
+_commit=2583c2d6de567c591f568e411e4dad886661590c
+version=1.0.0
+revision=2
+wrksrc=${pkgname}-${_commit}
+build_style=go
+go_import_path="github.com/davidnarayan/httpstat"
+hostmakedepends="git"
+short_desc="It's like curl -v, with colours"
+maintainer="Diogo Leal <diogo@diogoleal.com>"
+license="MIT"
+homepage="https://github.com/davidnarayan/httpstat"
+distfiles="https://github.com/davidnarayan/httpstat/archive/${_commit}.tar.gz"
+checksum=9f5f66865fed1a990837042153f73757bd5ea71aab3dfcb1bcc29549fce14b08
+
+post_install() {
+	vlicense LICENSE
+}
