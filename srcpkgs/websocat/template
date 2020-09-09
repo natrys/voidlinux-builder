@@ -1,6 +1,6 @@
 # Template file for 'websocat'
 pkgname=websocat
-version=1.4.0
+version=1.6.0
 revision=1
 build_style=cargo
 short_desc="Command-line client for WebSockets"
@@ -8,7 +8,7 @@ maintainer="Imran Khan <imrankhan@teknik.io>"
 license="MIT"
 homepage="https://github.com/vi/websocat"
 distfiles="https://github.com/vi/websocat/archive/v${version}.tar.gz"
-checksum=bf4efd28da077856ddb6ad8d05a4c9419c505825512cc9e47a06a63793694eb8
+checksum=3f7e5e99d766b387292af56c8e4b39ce9a7f0da54ff558a6080ddc1024a33896
 
 post_install() {
 	vlicense LICENSE
