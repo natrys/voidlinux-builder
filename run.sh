@@ -25,8 +25,10 @@ grep -o 'TAG.*' void/.travis.yml | sed -e 's/^TAG/DOCKER_TAG/' >> /tmp/docker_ma
 . /tmp/docker_masterdir
 rm /tmp/docker_masterdir
 
+DOCKER_IMAGE=${DOCKER_BASE}-${BOOTSTRAP}:${DOCKER_TAG}
+DOCKER_IMAGE=ghcr.io/natrys/voidlinux:masterdir
 
-/bin/echo -e "\x1b[32mPulling docker image $DOCKER_BASE-$BOOTSTRAP:$TAG...\x1b[0m"
+/bin/echo -e "\x1b[32mPulling docker image $DOCKER_IMAGE...\x1b[0m"
 docker pull $DOCKER_BASE-$BOOTSTRAP:$DOCKER_TAG
 docker run -d \
 	   --name $DOCKER_NAME \
@@ -35,7 +37,7 @@ docker run -d \
      -e NPROCS="$NPROCS" \
      -e _ARCH="$arch" \
 	   -e PATH="$PATH" \
-	   $DOCKER_BASE-$BOOTSTRAP:$DOCKER_TAG \
+	   ${DOCKER_IMAGE} \
 	   /bin/sh -c 'sleep inf'
 
 cd void/
@@ -45,6 +47,7 @@ cd void/
 
 cd ../
 
+# TODO Understand the left-tree thing Void does here
 git diff --name-only HEAD^ HEAD | \
   grep ^srcpkgs/ | perl -pe 's|srcpkgs/(.*?)/.*$|\1|' | \
     sort | uniq > /tmp/packages
