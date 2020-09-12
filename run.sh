@@ -26,10 +26,10 @@ grep -o 'TAG.*' void/.travis.yml | sed -e 's/^TAG/DOCKER_TAG/' >> /tmp/docker_ma
 rm /tmp/docker_masterdir
 
 DOCKER_IMAGE=${DOCKER_BASE}-${BOOTSTRAP}:${DOCKER_TAG}
-DOCKER_IMAGE=ghcr.io/natrys/voidlinux:masterdir
+DOCKER_IMAGE="ghcr.io/natrys/voidlinux:masterdir-${BOOTSTRAP}"
 
 /bin/echo -e "\x1b[32mPulling docker image $DOCKER_IMAGE...\x1b[0m"
-docker pull $DOCKER_BASE-$BOOTSTRAP:$DOCKER_TAG
+docker pull $DOCKER_IMAGE
 docker run -d \
 	   --name $DOCKER_NAME \
 	   -v "${GITHUB_WORKSPACE}":/hostrepo \
