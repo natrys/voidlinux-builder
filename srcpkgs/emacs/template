@@ -1,8 +1,8 @@
 pkgname=emacs
 version=28.0.50
-_commit=d08568e6e923051ca2376c2e0e6e7a22b66a2f33
+_commit=eeae97282e245c82c470557d76a252a833aed5d5
 wrksrc=${pkgname}-${_commit}
-revision=8
+revision=9
 build_style=gnu-configure
 configure_args="--with-file-notification=inotify --with-modules
  $(vopt_with jpeg) $(vopt_with tiff) $(vopt_with gif) $(vopt_with png)
@@ -25,7 +25,7 @@ maintainer="Imran Khan <imrankhan@teknik.io>"
 license="GPL-3.0-or-later"
 homepage="http://www.gnu.org/software/emacs/"
 distfiles="https://github.com/emacs-mirror/emacs/archive/${_commit}.tar.gz"
-checksum=39b1a7b7e2e3725ad7abfdffd510ed45703bf070423b4ab1e96bdf223d93e23b
+checksum=783b326c4b377ba6794695402602137289bf174d23d1952df5efef0eb62e68a9
 replaces="emacs>=0"
 nocross=yes
 nopie=yes
