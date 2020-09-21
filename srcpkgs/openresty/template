@@ -1,0 +1,81 @@
+# Template file for 'openresty'
+pkgname=openresty
+version=1.17.8.2
+revision=1
+build_style=configure
+hostmakedepends="perl"
+makedepends="libressl-devel pcre-devel $(vopt_if geoip geoip-devel)"
+short_desc="High performance web platform based on Nginx and LuaJIT"
+maintainer="Imran Khan <imrankhan@teknik.io>"
+license="BSD-2-Clause, BSD"
+homepage="https://openresty.org/"
+distfiles="https://openresty.org/download/openresty-${version}.tar.gz"
+checksum=2f321ab11cb228117c840168f37094ee97f8f0316eac413766305409c7e023a0
+
+system_accounts="openresty"
+make_dirs="/var/log/openresty 0750 root root
+ /var/tmp 1777 root root
+ /var/tmp/openresty 0750 openresty root"
+
+build_options="geoip stream"
+desc_option_stream="Enable support for stream proxies"
+build_options_default="geoip stream"
+
+do_configure() {
+	local cfgdir=/opt/openresty
+	local tmpdir=/var/tmp/openresty
+
+	if [ "$CROSS_BUILD" ]; then
+		# fake configure run on host
+		unset CC CPP LD CFLAGS CPPFLAGS LDFLAGS
+	fi
+
+	local stream_modules="\
+		--with-stream \
+		--with-stream_realip_module \
+		--with-stream_ssl_module \
+		--with-stream_ssl_preread_module \
+		$(vopt_if geoip --with-stream_geoip_module) \
+	"
+
+	./configure --prefix=${cfgdir} \
+		--pid-path=/run/openresty.pid \
+		--lock-path=/var/lock/openresty.lock \
+		--user=openresty --group=openresty \
+		--http-log-path=/var/log/openresty/access.log \
+		--error-log-path=/var/log/openresty/error.log \
+		--http-client-body-temp-path=${tmpdir}/client-body \
+		--http-proxy-temp-path=${tmpdir}/proxy \
+		--http-fastcgi-temp-path=${tmpdir}/fastcgi \
+		--http-scgi-temp-path=${tmpdir}/scgi \
+		--http-uwsgi-temp-path=${tmpdir}/uwsgi \
+		--with-mail --with-mail_ssl_module \
+		--with-pcre-jit --with-file-aio \
+		--with-http_gunzip_module \
+		--with-http_v2_module \
+		--with-http_dav_module \
+		--with-http_gzip_static_module \
+		--with-http_realip_module \
+		--with-http_ssl_module \
+		--with-http_stub_status_module \
+		--with-http_sub_module \
+		$(vopt_if geoip --with-http_geoip_module) \
+		$(vopt_if stream "$stream_modules")
+}
+
+pre_build() {
+	_version="$(echo $version | cut -d. -f1-3)"
+	
+	if [ "$CROSS_BUILD" ]; then
+		case "$XBPS_TARGET_MACHINE" in
+			arm*|aarch64*) cp "${FILESDIR}/ngx_auto_config.h.armv6l" build/nginx-${_version}/objs/ngx_auto_config.h;;
+		esac
+	fi
+  
+	sed -i -e 's/-lcrypt/$(LDFLAGS) &/' build/nginx-${_version}/objs/Makefile
+}
+
+post_install() {
+	vlicense COPYRIGHT
+	vsv openresty
+}
