@@ -1,0 +1,28 @@
+# Template file for 'xnotify'
+pkgname=xnotify
+version=0.3.1
+revision=1
+build_style=gnu-makefile
+make_use_env=yes
+makedepends="freetype-devel imlib2-devel libXft-devel libXinerama-devel"
+short_desc="Popup a notification on the screen"
+maintainer="Imran Khan <imrankhan@teknik.io>"
+license="MIT"
+homepage="https://github.com/phillbush/xnotify"
+distfiles="https://github.com/phillbush/xnotify/archive/v${version}.tar.gz"
+checksum=43c03817aca539063c3da63bb3768862b040c29c242a98eb51a40c6653c54582
+
+pre_build() {
+	vsed -i config.mk -e 's|/local||' \
+			-e '\|^X11INC|s|/.*|/usr/include/X11|' \
+			-e "\|^CFLAGS|s|\$| ${CFLAGS}|"
+
+	if [ "$CROSS_BUILD" ]; then
+		vsed -i config.mk -e "s|^CC = .*|CC = ${CC}|" \
+			-e 's/-I/-I${XBPS_CROSS_BASE}/g'
+	fi
+}
+
+post_install() {
+	vlicense LICENSE
+}
