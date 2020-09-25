@@ -27,20 +27,23 @@ master() {
   new_commit="$(jq -r .sha $info)"
   [ "$old_commit" = "$new_commit" ] && exit 1
   
-  tarball=$(pkgname=$pkgname version=$new_commit sh -c 'eval echo $distfile')
+  old_revision=$(grep -Po '^revision=\K.*' $template)
+  
+  tarball=$(pkgname=$pkgname _commit=$new_commit sh -c 'eval echo $distfile')
   wget -O /tmp/$pkgname.tar.gz $tarball
 
   old_date=$(grep -Po 'version=\K\d{8}' $template)
   if [ "$old_date" ]; then
     new_date=$(jq -r .commit.committer.date < $info | sed -E 's|T.*||; s|-||g')
     if [ "$old_date" = "$new_date" ]; then
-      old_revision=$(grep -Po '^revision=\K.*' $template)
       new_revision=$(expr $old_revision + 1)
     else
       new_revision=1
     fi
     sed -i -E "\|^version|s|=.*|=$new_date|" $template
     rm $info
+  else
+    new_revision=$(expr $old_revision + 1)
   fi
 
   sed -i -E "\|^_commit|s|=.*|=$new_commit|" $template
