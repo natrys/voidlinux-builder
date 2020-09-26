@@ -1,0 +1,20 @@
+# Template file for 'quickjs'
+pkgname=quickjs
+version=20200906
+revision=1
+_commit=7c312df422572cf867f29a1d80693e8a77f7fb2a
+wrksrc=${pkgname}-${_commit}
+build_style=gnu-makefile
+make_use_env=yes
+make_install_args="prefix=/usr"
+short_desc="Small and Embeddable Javascript Engine"
+maintainer="Imran Khan <imrankhan@teknik.io>"
+license="MIT"
+homepage="https://bellard.org/quickjs/"
+distfiles="https://github.com/bellard/quickjs/archive/${_commit}.tar.gz"
+checksum=f2af1d863b86b4239240cc0a7171505944ff9dc383d7819d58bb41fd81b7a64a
+
+post_install() {
+	awk '{ if ($0 ~ /.\*/) { print $0 } else { exit 0 } ; }' qjs.c > COPYING
+	vlicense COPYING
+}
