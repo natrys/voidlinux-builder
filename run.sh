@@ -34,8 +34,8 @@ docker run -d \
 	   --name $DOCKER_NAME \
 	   -v "${GITHUB_WORKSPACE}":/hostrepo \
 	   -v /tmp:/tmp \
-     -e NPROCS="$NPROCS" \
-     -e _ARCH="$arch" \
+	   -e NPROCS="$NPROCS" \
+	   -e _ARCH="$arch" \
 	   -e PATH="$PATH" \
 	   ${DOCKER_IMAGE} \
 	   /bin/sh -c 'sleep inf'

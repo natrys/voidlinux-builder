@@ -11,7 +11,7 @@ export distfile=$(grep -Po "^distfiles=\\K\"https://github.com/$repo/.*\"" < $te
 release() {
   new_tag=$(curl -sL https://api.github.com/repos/$repo/releases/latest | jq -r .tag_name)
   old_version=$(grep -Po '^version=\K.*' $template)
-  new_version=$(echo $new_tag | perl -pe 's/\D*?(.*\d).*?/$1/')
+  new_version=$(echo $new_tag | perl -pe 's/(?:\D*)?(.*\d)(?:.*)?/$1/')
   [ "$old_version" = "$new_version" ] && exit 1
 
   tarball=$(pkgname=$pkgname version=$new_version sh -c 'eval echo $distfile')

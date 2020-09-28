@@ -15,6 +15,6 @@ distfiles="https://github.com/bellard/quickjs/archive/${_commit}.tar.gz"
 checksum=f2af1d863b86b4239240cc0a7171505944ff9dc383d7819d58bb41fd81b7a64a
 
 post_install() {
-	awk '{ if ($0 ~ /.\*/) { print $0 } else { exit 0 } ; }' qjs.c > COPYING
+	awk '!/.\*/ {exit 0} {print $0}' qjs.c > COPYING
 	vlicense COPYING
 }
