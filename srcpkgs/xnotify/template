@@ -1,6 +1,6 @@
 # Template file for 'xnotify'
 pkgname=xnotify
-version=0.3.1
+version=0.5.0
 revision=1
 build_style=gnu-makefile
 make_use_env=yes
@@ -10,7 +10,7 @@ maintainer="Imran Khan <imrankhan@teknik.io>"
 license="MIT"
 homepage="https://github.com/phillbush/xnotify"
 distfiles="https://github.com/phillbush/xnotify/archive/v${version}.tar.gz"
-checksum=43c03817aca539063c3da63bb3768862b040c29c242a98eb51a40c6653c54582
+checksum=307f7f87a215f01da38b953c57be11ed42909afca541d159163b010cbdae45a2
 
 pre_build() {
 	vsed -i config.mk -e 's|/local||' \
