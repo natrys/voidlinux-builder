@@ -47,13 +47,14 @@ cd void/
 
 cd ../
 
+docker exec -t ${DOCKER_NAME} sh /hostrepo/add_repo.sh
+
 # TODO Understand the left-tree thing Void does here
 git diff --name-only HEAD^ HEAD | \
   grep ^srcpkgs/ | perl -pe 's|srcpkgs/(.*?)/.*$|\1|' | \
-    sort | uniq > /tmp/packages
+    sort | uniq > /tmp/unsorted_packages
 
-say "These packages will be built:"
-cat /tmp/packages
+cat common/shlibs >> void/common/shlibs
 
 docker exec -t ${DOCKER_NAME} sh /hostrepo/build.sh
 
