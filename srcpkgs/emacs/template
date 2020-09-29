@@ -1,8 +1,8 @@
 pkgname=emacs
 version=28.0.50
-_commit=d067ac5b9e956c8cdf2f61133e72ce580cf878d7
+_commit=7f2c35d02874129723cc5e89d54cc3ab5bf07a31
 wrksrc=${pkgname}-${_commit}
-revision=10
+revision=11
 build_style=gnu-configure
 configure_args="--with-file-notification=inotify --with-modules
  $(vopt_with jpeg) $(vopt_with tiff) $(vopt_with gif) $(vopt_with png)
@@ -25,7 +25,7 @@ maintainer="Imran Khan <imrankhan@teknik.io>"
 license="GPL-3.0-or-later"
 homepage="http://www.gnu.org/software/emacs/"
 distfiles="https://github.com/emacs-mirror/emacs/archive/${_commit}.tar.gz"
-checksum=c96a19921ef6483d95def5a6c8031ffb7666af44ec61f9c894e93c9a23321689
+checksum=cce9fd989a19ab70f3b097b631975d0e15127cacd6bd49c6a9aead6af3e4ee21
 replaces="emacs>=0"
 nocross=yes
 nopie=yes
@@ -42,10 +42,6 @@ do_configure() {
 	./configure --with-x-toolkit=athena --without-toolkit-scroll-bars --without-ns \
     		--with-xft --without-dbus --without-gconf --without-gsettings --with-zlib \
 		${configure_args}
-}
-
-do_build() {
-	make ${makejobs}
 }
 
 do_install() {
