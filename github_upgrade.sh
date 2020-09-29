@@ -20,9 +20,11 @@ release() {
   sed -i -E "\|^version|s|=.*|=$new_version|" $template
 }
 
-master() {
+head() {
+  branch=master
+  [ -n "$2" ] && branch=$2
   info=/tmp/$pkgname.commit
-  curl -sL https://api.github.com/repos/$repo/commits/master > $info
+  curl -sL https://api.github.com/repos/$repo/commits/$branch > $info
   old_commit=$(grep -Po '^_commit=\K.*' $template)
   new_commit="$(jq -r .sha $info)"
   [ "$old_commit" = "$new_commit" ] && exit 1
