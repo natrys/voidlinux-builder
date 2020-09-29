@@ -2,7 +2,7 @@
 
 /hostrepo/void/xbps-src sort-dependencies $(cat /tmp/unsorted_packages) > /tmp/packages
 
-say "These packages will be built:"
+echo "These packages will be built:"
 cat /tmp/packages
 
 while read package
@@ -14,7 +14,7 @@ done < /tmp/packages ;
 
 while read package
 do
-  bin/echo -e '\x1b[32mBuilding package: $package...\x1b[0m'
+  bin/echo -e "\x1b[32mBuilding package: $package...\x1b[0m"
   rm -r /hostrepo/void/srcpkgs/$package/
   cp -r /hostrepo/srcpkgs/$package/ /hostrepo/void/srcpkgs/$package/
   /hostrepo/void/xbps-src -j$NPROCS $_ARCH pkg "$package"

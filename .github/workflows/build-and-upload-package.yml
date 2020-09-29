@@ -15,6 +15,8 @@ jobs:
           path: void/
       
       - name: Build the package
+        env:
+          REPO_ADDR: ${{ secrets.REPO_ADDR }}
         run: |
           bash ./run.sh
 

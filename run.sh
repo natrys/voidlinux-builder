@@ -34,6 +34,7 @@ docker run -d \
 	   --name $DOCKER_NAME \
 	   -v "${GITHUB_WORKSPACE}":/hostrepo \
 	   -v /tmp:/tmp \
+	   -e REPO_ADDR="$REPO_ADDR" \
 	   -e NPROCS="$NPROCS" \
 	   -e _ARCH="$arch" \
 	   -e PATH="$PATH" \
