@@ -21,8 +21,7 @@ makedepends="ncurses-devel libXaw-devel
  $(vopt_if harfbuzz harfbuzz-devel) $(vopt_if cairo cairo-devel)
  $(vopt_if lcms lcms2-devel) $(vopt_if gmp gmp-devel)
  $(vopt_if nativecomp libgccjit)"
-depends="emacs-common-${version}_${revision}"
-short_desc="GNU Emacs editor"
+short_desc="GNU Emacs editor (nativecomp enabled)"
 maintainer="Imran Khan <imrankhan@teknik.io>"
 license="GPL-3.0-or-later"
 homepage="http://www.gnu.org/software/emacs/"
@@ -31,6 +30,7 @@ checksum=6a4975643e4e0c918097d45932ded184cc52ab5d5781d1b719aea4d02f0af9af
 replaces="emacs>=0"
 nocross=yes
 nopie=yes
+provides="gnu_emacs-${version}"
 conflicts="emacs>=0"
 
 # Package build options

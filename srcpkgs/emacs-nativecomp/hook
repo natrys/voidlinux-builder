@@ -1,0 +1,1 @@
+rm common/hooks/post-install/11-pkglint-elf-in-usrshare.sh
