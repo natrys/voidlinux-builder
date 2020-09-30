@@ -10,7 +10,7 @@ cat /tmp/packages
 while read package
 do
   rm -r void/srcpkgs/$package/
-  cp -r srcpkgs/$package/ void/srcpkgs/$package/
+  cp -r srcpkgs/$package/ void/srcpkgs/
 done < /tmp/packages ;
 
 cd void/
@@ -20,6 +20,6 @@ do
   chroot-git restore common/hooks/
   /bin/echo -e "\x1b[32mBuilding package: $package...\x1b[0m"
   
-  [ -f srcpkgs/$package/hook ] && sh srcpkgs/$package/hook
+  [ -f srcpkgs/$package/hook ] && . srcpkgs/$package/hook
   ./xbps-src -j$NPROCS $_ARCH pkg "$package"
 done < /tmp/packages ;

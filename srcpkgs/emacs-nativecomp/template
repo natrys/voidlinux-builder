@@ -1,8 +1,8 @@
 pkgname=emacs-nativecomp
 version=28.0.50
-_commit=89f064104c25f8b4362ef54d28fd4bce18f6af3b
+_commit=ec23b719e5350f70f731060bca04d5b23887f08c
 wrksrc=emacs-${_commit}
-revision=1
+revision=2
 build_style=gnu-configure
 configure_args="--with-file-notification=inotify --with-modules
  $(vopt_with jpeg) $(vopt_with tiff) $(vopt_with gif) $(vopt_with png)
@@ -26,7 +26,7 @@ maintainer="Imran Khan <imrankhan@teknik.io>"
 license="GPL-3.0-or-later"
 homepage="http://www.gnu.org/software/emacs/"
 distfiles="https://github.com/emacs-mirror/emacs/archive/${_commit}.tar.gz"
-checksum=6a4975643e4e0c918097d45932ded184cc52ab5d5781d1b719aea4d02f0af9af
+checksum=cbdda73dde31e7dd73bf6af541ad90719f6696c24415b0d3ff9b15ca0ab717f7
 replaces="emacs>=0"
 nocross=yes
 nopie=yes
@@ -50,7 +50,7 @@ do_configure() {
 do_install() {
 	make DESTDIR=$DESTDIR install
 	rm -f ${DESTDIR}/usr/bin/ctags
-	rm -rf ${DESTDIR}/usr/lib
+	rm -rf ${DESTDIR}/usr/lib/systemd
 	rm -rf ${DESTDIR}/usr/share/icons
 	rm -f ${DESTDIR}/usr/share/info/info.info.gz
 	rm -f ${DESTDIR}/usr/share/man/man1/ctags.1*
