@@ -52,7 +52,7 @@ docker exec -t ${DOCKER_NAME} sh /hostrepo/add_repo.sh
 
 # TODO Understand the left-tree thing Void does here
 git diff --name-only HEAD^ HEAD | \
-  grep ^srcpkgs/ | perl -pe 's|srcpkgs/(.*?)/.*$|\1|' | \
+  grep ^srcpkgs/ | perl -pe 's|srcpkgs/(.*?)(/.*)$|\1|' | \
     sort | uniq > /tmp/unsorted_packages
 
 cat common/shlibs >> void/common/shlibs
