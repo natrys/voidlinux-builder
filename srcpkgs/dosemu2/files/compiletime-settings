@@ -1,0 +1,8 @@
+config {
+  plugin_term on
+  x on
+  net on
+  gpm on
+  prefix /usr
+  sysconfdir /etc
+}
