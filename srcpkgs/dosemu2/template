@@ -1,12 +1,12 @@
 # Template file for 'dosemu2'
 pkgname=dosemu2
-version=20201012
+version=20201015
 revision=1
-_commit=d7c9be2c8e4aacdca01e44f43aad03e6664f0085
+_commit=3bcfa3872b9aac903a1b5fa6ad3c0e885e482d87
 wrksrc=${pkgname}-${_commit}
 build_style=gnu-makefile
 make_use_env=yes
-hostmakedepends="autoconf automake flex pkg-config"
+hostmakedepends="autoconf automake bdftopcf flex pkg-config"
 makedepends="SDL2-devel gpm-devel libslirp-devel readline-devel json-c-devel
   libao-devel fluidsynth-devel alsa-lib-devel slang-devel fdpp-devel libbsd-devel"
 short_desc="Run DOS programs under linux"
@@ -14,7 +14,7 @@ maintainer="Imran Khan <imrankhan@teknik.io>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/dosemu2/dosemu2"
 distfiles="https://github.com/dosemu2/dosemu2/archive/${_commit}.tar.gz"
-checksum=5956fbb1ac2196601d3abd60e8c3067472ba7b1da4328eb4fbaf3c3b581ab4bb
+checksum=df32e4e5af50f837ecdd8a76c6275ac29649e497bea22983cac76976860bffbc
 
 do_configure() {
 	cp ${FILESDIR}/compiletime-settings compiletime-settings
