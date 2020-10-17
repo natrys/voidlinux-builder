@@ -1,0 +1,20 @@
+# Template file for 'vis'
+pkgname=vis
+version=20201010
+_commit=3fe8d2ecb9fafc67b2731419a47a1b467f381dae
+wrksrc=${pkgname}-${_commit}
+revision=1
+build_style=gnu-configure
+makedepends="libtermkey-devel lua53-devel"
+depends="lua53-lpeg"
+short_desc="Tiny vim like editor"
+maintainer="Imran Khan <imrankhan@teknik.io>"
+license="ISC"
+homepage="https://github.com/martanne/vis"
+distfiles="https://github.com/martanne/vis/archive/${_commit}.tar.gz"
+checksum=7e08a4f87507ceb8c69a9cf213d8d33296adac2c21deddef51422d2917b9120e
+conflicts="outils" # /usr/bin/vis
+
+post_install() {
+	vlicense LICENSE
+}
