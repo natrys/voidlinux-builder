@@ -15,6 +15,7 @@ jobs:
           path: void/
       
       - name: Build the package
+        timeout-minutes: 30
         env:
           REPO_ADDR: ${{ secrets.REPO_ADDR }}
         run: |
