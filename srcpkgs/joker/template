@@ -1,0 +1,29 @@
+# Template file for 'joker'
+pkgname=joker
+version=0.15.7
+revision=1
+build_style=go
+go_import_path=github.com/candid82/joker
+hostmakedepends="git"
+short_desc="Interpreted dialect of Clojure written in Go and Clojure(Script) linter"
+maintainer="Imran Khan <imrankhan@teknik.io>"
+license="EPL-1.0"
+homepage="https://joker-lang.org/"
+distfiles="https://github.com/candid82/joker/archive/v${version}.tar.gz"
+checksum=596654e882bb231efdf842d72ad6e7027521460b92aa771ae4cb7f22fbd9e969
+
+if [ "$CROSS_BUILD" ]; then
+	hostmakedepends+=" joker"
+fi
+
+pre_build() {
+	JOKER="joker"
+
+	if [ -z "$CROSS_BUILD" ]; then
+		JOKER="../joker"
+		go generate ./...
+		go build
+	fi
+
+	(cd std; "$JOKER" --hashmap-threshold 8192 generate-std.joke)
+}
