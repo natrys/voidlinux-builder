@@ -1,6 +1,6 @@
 # Template file for 'xnotify'
 pkgname=xnotify
-version=0.5.0
+version=0.7.3
 revision=1
 build_style=gnu-makefile
 make_use_env=yes
@@ -9,8 +9,8 @@ short_desc="Popup a notification on the screen"
 maintainer="Imran Khan <imrankhan@teknik.io>"
 license="MIT"
 homepage="https://github.com/phillbush/xnotify"
-distfiles="https://github.com/phillbush/xnotify/archive/v${version}.tar.gz"
-checksum=307f7f87a215f01da38b953c57be11ed42909afca541d159163b010cbdae45a2
+distfiles="https://github.com/phillbush/xnotify/archive/${version}.tar.gz"
+checksum=3def3354835edaa1802f4814a6127ce3e37c12d9744acaad549c2c8ecc46d65d
 
 pre_build() {
 	vsed -i config.mk -e 's|/local||' \
