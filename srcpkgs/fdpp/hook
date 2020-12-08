@@ -1,0 +1,3 @@
+echo "creating devel subpackage"
+ln -s $PWD/srcpkgs/fdpp $PWD/srcpkgs/fdpp-devel
+
