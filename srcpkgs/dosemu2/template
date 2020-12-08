@@ -1,8 +1,8 @@
 # Template file for 'dosemu2'
 pkgname=dosemu2
-version=20201023
+version=20201207
 revision=1
-_commit=104b3d8158dbdc99ff0ec6fd5e3d1c4b1dfc04e5
+_commit=ca62b13af1a1b33abaf91ba47532e16fe7dfea6c
 wrksrc=${pkgname}-${_commit}
 build_style=gnu-makefile
 make_use_env=yes
@@ -14,7 +14,7 @@ maintainer="Imran Khan <imrankhan@teknik.io>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/dosemu2/dosemu2"
 distfiles="https://github.com/dosemu2/dosemu2/archive/${_commit}.tar.gz"
-checksum=af849bf83a144855d8cb9cf714464a4a29702bf612d2f130ce08b3ed9887fedc
+checksum=3eea04b449da88451ed1163c3438ea00ee1ac9b642e915373193237e52d17831
 
 do_configure() {
 	cp ${FILESDIR}/compiletime-settings compiletime-settings
