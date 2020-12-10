@@ -1,0 +1,20 @@
+# Template file for 'bspwm'
+pkgname=bspwm
+version=0.9.10
+_commit=0510d971855a390d3b0a669e1da86a42b98ba8e9
+wrksrc=${pkgname}-${_commit}
+revision=2
+build_style=gnu-makefile
+makedepends="xcb-util-wm-devel xcb-util-keysyms-devel"
+short_desc="Tiling window manager based on binary space partitioning"
+maintainer="Orphaned <orphan@voidlinux.org>"
+license="BSD-2-Clause"
+homepage="https://github.com/baskerville/bspwm"
+distfiles="https://github.com/baskerville/bspwm/archive/${_commit}.tar.gz"
+checksum=53c437882072679bc963108f4306c7c3752d2c51ff05080066057f6d0372d9f7
+
+CFLAGS="-fcommon"
+
+post_install() {
+	vlicense LICENSE
+}
