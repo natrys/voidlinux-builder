@@ -12,5 +12,5 @@ distfiles="https://github.com/okbob/pspg/archive/${version}.tar.gz"
 checksum=7ca7cd233726478ea276d6af83fcb9d8061d3e851aa533977310fdeebbc793e9
 
 post_install() {
-        vlicense LICENSE
+	vlicense LICENSE
 }
