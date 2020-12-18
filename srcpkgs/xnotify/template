@@ -1,7 +1,9 @@
 # Template file for 'xnotify'
 pkgname=xnotify
 version=0.8.1
-revision=1
+revision=2
+_commit=6bd1adc8ba2f140dbc81d8237e22b41a01fb6c91
+wrksrc=${pkgname}-${_commit}
 build_style=gnu-makefile
 make_use_env=yes
 makedepends="freetype-devel imlib2-devel libXft-devel libXinerama-devel"
@@ -9,8 +11,8 @@ short_desc="Popup a notification on the screen"
 maintainer="Imran Khan <imrankhan@teknik.io>"
 license="MIT"
 homepage="https://github.com/phillbush/xnotify"
-distfiles="https://github.com/phillbush/xnotify/archive/v${version}.tar.gz"
-checksum=bb409c37e898674843d5279eb990b3da73cdbf00bc2dc2f8aa36fc0235e3ca7b
+distfiles="https://github.com/phillbush/xnotify/archive/${_commit}.tar.gz"
+checksum=e989b2f3298688db3f914f64bb07658aa4300fa03830db0733af479ecba11d1b
 
 pre_build() {
 	vsed -i config.mk -e 's|/local||' \
