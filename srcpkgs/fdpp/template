@@ -1,6 +1,6 @@
 # Template file for 'fdpp'
 pkgname=fdpp
-version=1.1
+version=1.2
 revision=1
 archs="x86_64"
 build_style=gnu-makefile
@@ -11,7 +11,7 @@ maintainer="Imran Khan <imrankhan@teknik.io>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/dosemu2/fdpp"
 distfiles="https://github.com/dosemu2/fdpp/archive/${version}.tar.gz"
-checksum=c6b0f75ced963824aa662a8c702252289678db5e16fe607cfc335e1aa6cd6ebb
+checksum=b3ca757942b2bbf1b369ce361367349d92be4fc494d78a8decd830c944de9f10
 shlib_provides="libfdpp.so"
 
 pre_build() {
