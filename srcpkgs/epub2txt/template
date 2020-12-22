@@ -1,0 +1,13 @@
+# Template file for 'epub2txt'
+pkgname=epub2txt
+version=2.02
+revision=1
+_commit=911e28056ad0af4bc72bd0d4d812e8bcc280d16a
+wrksrc=${pkgname}2-${_commit}
+build_style=gnu-makefile
+short_desc="CLI utility for extracting text from EPUB documents"
+maintainer="Imran Khan <imrankhan@teknik.io>"
+license="GPL-3.0-only"
+homepage="https://github.com/kevinboone/epub2txt2"
+distfiles="https://github.com/kevinboone/epub2txt2/archive/${_commit}.tar.gz"
+checksum=d313fa31353056a74d516e6faaf7d52d3fa29e77acc3fbc6b007be150451ff4e
