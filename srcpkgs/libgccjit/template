@@ -1,23 +1,40 @@
 # Template file for 'libgccjit'
+_majorver=10
+_minorver=${_majorver}.2
+_patchver=${_minorver}.1
+
 pkgname=libgccjit
-version=9.3.0
+# we are using a 10-stable git snapshot alpine is using in order
+# to get regression fixes not yet incorporate into a stable release
+# it should be possible to switch back to stable with 10.3 or 11
+version=${_patchver}pre1
+wrksrc=gcc-${version/pre/_pre}
 revision=1
-wrksrc="gcc-${version}"
 build_style=gnu-configure
-configure_args="--disable-multilib
+configure_args="--with-system-zlib
+ --disable-multilib
  --disable-bootstrap
+ --disable-libssp
+ --disable-libquadmath
+ --disable-liboffloadmic
+ --disable-libada
+ --disable-libquadmath-support
+ --disable-libgomp
+ --disable-libvtv
+ --disable-libsanitizer
  --disable-lto
  --enable-checking=release
  --enable-host-shared
+ --enable-shared
  --enable-languages=jit"
-hostmakedepends="pkg-config tar"
-makedepends="gmp-devel mpfr-devel libmpc-devel"
+hostmakedepends="flex pkg-config tar"
+makedepends="gmp-devel mpfr-devel libmpc-devel zlib-devel"
 short_desc="Just-In-Time Compilation using GCC"
 maintainer="Imran Khan <imrankhan@teknik.io>"
 license="GPL-3.0-or-later"
 homepage="https://gcc.gnu.org/wiki/JIT"
-distfiles="${GNU_SITE}/gcc/gcc-${version}/gcc-${version}.tar.xz"
-checksum=71e197867611f6054aa1119b13a0c0abac12834765fe2d81f35ac57f84f742d1
+distfiles="https://dev.alpinelinux.org/~nenolod/gcc-${version/pre/_pre}.tar.xz"
+checksum=772cfd5d30eb9cc5a996fec9ba8cdcb45d37df1c9b5770610103b814b732c590
 
 post_install() {
 	rm -rf ${DESTDIR}/usr/bin
