@@ -1,0 +1,23 @@
+# Template file for 'dendrite'
+pkgname=dendrite
+version=0.3.9
+revision=1
+hostmakedepends="go"
+short_desc="Matrix homeserver written in Go"
+maintainer="Imran Khan <imrankhan@teknik.io>"
+license="Apache-2.0"
+homepage="https://github.com/matrix-org/dendrite/"
+distfiles="https://github.com/matrix-org/dendrite/archive/v${version}.tar.gz"
+checksum=f55fc0ba8635a103d03e554491d20c022de64bacccd091d1477ab6620d8238da
+nopie=yes
+
+do_build() {
+	vsed -i -e '/wasm/s/^/#/' build.sh
+	./build.sh
+}
+
+do_install() {
+	vmkdir opt/dendrite/bin/
+	vcopy bin/* opt/dendrite/bin/
+	vlicense LICENSE
+}
