@@ -6,12 +6,10 @@ set +e
 pkgname="$2"
 template=srcpkgs/$pkgname/template
 
-repo=$(grep -Po '^homepage=.*?\Kgithub.com/\K(.*?/.*?)(?=/)' < $template)
-echo $repo
+repo=$(grep -Po '^distfiles=.*?\Kgithub.com/\K(.*?/.*?)(?=/)' < $template)
 [ -n "$repo" ] || exit 1
 
 export distfile=$(grep -Po "^distfiles=\\K\"https://github.com/$repo/.*\"" < $template)
-echo $distfile
 
 release() {
   new_tag=$(curl -sL https://api.github.com/repos/$repo/releases/latest | jq -r .tag_name)
