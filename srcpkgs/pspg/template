@@ -1,6 +1,6 @@
 # Template file for 'pspg'
 pkgname=pspg
-version=4.3.0
+version=4.3.1
 revision=1
 build_style=gnu-configure
 makedepends="readline-devel postgresql-libs-devel"
@@ -9,7 +9,7 @@ maintainer="Imran Khan <imrankhan@teknik.io>"
 license="BSD-2-Clause"
 homepage="https://github.com/okbob/pspg"
 distfiles="https://github.com/okbob/pspg/archive/${version}.tar.gz"
-checksum=6cbf1188e7c5f778f8e5611490fe9da8a77f6b195c8fbbd1cd2cc7c4c35bc598
+checksum=58e166163683f205601997fd6d7aefeff46835b79ca1f62a75aa1fb218ac8cbe
 
 post_install() {
 	vlicense LICENSE
