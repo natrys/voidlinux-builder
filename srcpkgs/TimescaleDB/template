@@ -1,11 +1,11 @@
 # Template file for 'TimescaleDB'
 pkgname=TimescaleDB
 version=2.1.0
-revision=1
+revision=2
 wrksrc="timescaledb"
 build_style=cmake
 configure_args="-DREGRESS_CHECKS=OFF"
-makedepends="postgresql-libs-devel libressl-devel"
+makedepends="postgresql-libs-devel openssl-devel"
 short_desc="Time-series SQL Database"
 maintainer="Imran Khan <imrankhan@teknik.io>"
 license="Apache-2.0, custom:Timescale"
