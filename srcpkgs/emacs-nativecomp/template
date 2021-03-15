@@ -9,7 +9,7 @@ configure_args="--with-file-notification=inotify --with-modules
  $(vopt_with xpm) $(vopt_with svg rsvg) $(vopt_with imagemagick) $(vopt_with json)
  $(vopt_with xml xml2) $(vopt_with gnutls) $(vopt_with sound) $(vopt_with m17n m17n-flt)
  $(vopt_with harfbuzz) $(vopt_with cairo) $(vopt_with lcms) $(vopt_with gmp)
- $(vopt_with nativecomp)"
+ $(vopt_with native-compilation)"
 hostmakedepends="pkg-config autoconf texinfo tar"
 makedepends="ncurses-devel libXaw-devel
  dbus-devel acl-devel zlib-devel
@@ -20,7 +20,7 @@ makedepends="ncurses-devel libXaw-devel
  $(vopt_if sound alsa-lib-devel) $(vopt_if m17n m17n-lib-devel)
  $(vopt_if harfbuzz harfbuzz-devel) $(vopt_if cairo cairo-devel)
  $(vopt_if lcms lcms2-devel) $(vopt_if gmp gmp-devel)
- $(vopt_if nativecomp libgccjit)"
+ $(vopt_if native-compilation libgccjit)"
 short_desc="GNU Emacs editor (nativecomp enabled)"
 maintainer="Imran Khan <imrankhan@teknik.io>"
 license="GPL-3.0-or-later"
@@ -34,11 +34,11 @@ provides="emacs-${version}"
 conflicts="emacs>=0"
 
 # Package build options
-build_options="jpeg tiff gif png xpm svg xml imagemagick gnutls sound m17n json harfbuzz cairo lcms nativecomp"
+build_options="jpeg tiff gif png xpm svg xml imagemagick gnutls sound m17n json harfbuzz cairo lcms native-compilation"
 desc_option_xpm="Enable support for XPM images"
 desc_option_sound="Enable support for sound"
 desc_option_m17n="Enable support for m17n multilingual text processing"
-build_options_default="jpeg tiff gif png xpm svg xml gnutls sound m17n json harfbuzz cairo imagemagick lcms gmp nativecomp"
+build_options_default="jpeg tiff gif png xpm svg xml gnutls sound m17n json harfbuzz cairo imagemagick lcms gmp native-compilation"
 
 do_configure() {
 	./autogen.sh
