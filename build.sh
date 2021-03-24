@@ -21,5 +21,6 @@ do
   /bin/echo -e "\x1b[32mBuilding package: $package...\x1b[0m"
   
   [ -f srcpkgs/$package/hook ] && . srcpkgs/$package/hook
-  ./xbps-src -E -j$NPROCS $_ARCH pkg "$package"
+  #./xbps-src -E -j$NPROCS $_ARCH -f pkg "$package"
+  ./xbps-src -j$NPROCS $_ARCH -f pkg "$package"
 done < /tmp/packages ;
