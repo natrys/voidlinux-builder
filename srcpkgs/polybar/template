@@ -4,8 +4,7 @@ version=3.5.5
 _commit=2901e1e4769e8ffcf2def9ced9b7bda02763294c
 _xpp_commit=7a9960bbb912f0ed66929c978aaeb1c30acf4bfd
 wrksrc=${pkgname}-${_commit}
-create_wrksrc=yes
-revision=1
+revision=2
 build_style=cmake
 skip_extraction="xpp.tar.gz"
 configure_args="
@@ -32,7 +31,7 @@ homepage="https://github.com/polybar/polybar"
 distfiles="https://github.com/polybar/polybar/archive/${_commit}.tar.gz
   https://github.com/polybar/xpp/archive/${_xpp_commit}.tar.gz>xpp.tar.gz"
 checksum="0411fd398d243511c1c029c81c1259eeffc7b66639defdfae2ad90a4df076c0b
-  58d9de249bd2725c5d86b6089725e1eb95e114127ab7b52921395be9"
+  03acbb18ade967e6ed4b5250d3c354d9023e40ff56b1a7ef288a4b8f77bf9844"
 
 build_options="alsa curl i3 mpd network pulseaudio"
 build_options_default="curl network"
@@ -57,12 +56,12 @@ if [ "$XBPS_TARGET_NO_ATOMIC8" ]; then
 	configure_args+=" -DCMAKE_CXX_STANDARD_LIBRARIES='-latomic'"
 fi
 
-pre_configure() {
-  tar xf xpp.tar.gz --strip-components=1 -C lib/xpp
+post_extract() {
+  bsdtar xf ${XBPS_SRCDISTDIR}/${pkgname}-${version}/xpp.tar.gz --strip-components=1 -C lib/xpp
 }
 
 post_install() {
-	rm -rf ${DESTDIR}/usr/share/doc/polybar
-	vdoc config
+	#rm -rf ${DESTDIR}/usr/share/doc/polybar
+	#vdoc config
 	vlicense LICENSE
 }
