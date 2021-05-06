@@ -1,8 +1,8 @@
 # Template file for 'TimescaleDB'
 pkgname=TimescaleDB
-version=2.2.0
-revision=2
-wrksrc="timescaledb"
+version=2.2.1
+revision=1
+wrksrc="timescaledb-${version}"
 build_style=cmake
 configure_args="-DREGRESS_CHECKS=OFF -DCMAKE_BUILD_TYPE=Release"
 makedepends="postgresql-libs-devel openssl-devel"
@@ -10,8 +10,9 @@ short_desc="Time-series SQL Database"
 maintainer="Imran Khan <imrankhan@teknik.io>"
 license="Apache-2.0, custom:Timescale"
 homepage="https://timescale.com"
-distfiles="https://github.com/timescale/timescaledb/releases/download/${version}/timescaledb-${version}.tar.lzma"
-checksum=0696e5e05b780b502eef473336851ee64450b061eda9d991e93c33a9b70cdf18
+#distfiles="https://github.com/timescale/timescaledb/releases/download/${version}/timescaledb-${version}.tar.lzma"
+distfiles="https://github.com/timescale/timescaledb/archive/refs/tags/${version}.tar.gz"
+checksum=61fd4d5a7c0aabfad2ee8f232eb6504a7b94a20b74f5ef22e1c47263bacef69a
 
 post_install() {
 	vlicense LICENSE-APACHE
