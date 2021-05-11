@@ -1,6 +1,6 @@
 # Template file for 'nift'
 pkgname=nift
-version=2.3.10
+version=2.4.12
 revision=1
 archs="x86_64* i686* aarch64* armv7*"
 wrksrc=nsm-${version}
@@ -13,7 +13,7 @@ maintainer="Imran Khan <imrankhan@teknik.io>"
 license="MIT"
 homepage="https://nift.dev/"
 distfiles="https://github.com/nifty-site-manager/nsm/archive/v${version}.tar.gz"
-checksum=ef4410d423fca8dfb67a349a188a0a46bec67f7eb0157d146ae2fbb28f2f2295
+checksum=7a28987114cd5e4717b31a96840c0be505d58a07e20dcf26b25add7dbdf2668b
 
 pre_build() {
 	vsed -i Lua.h -e "s|/usr/local|${XBPS_CROSS_BASE}/usr|"
