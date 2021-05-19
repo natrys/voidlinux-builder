@@ -1,0 +1,13 @@
+# Template file for 'ktrl'
+pkgname=ktrl
+version=0.1.8
+revision=1
+build_style=cargo
+hostmakedepends="autoconf automake libtool pkg-config"
+makedepends="libevdev-devel"
+short_desc="Supercharged keyboard programming daemon"
+maintainer="Imran Khan <imrankhan@teknik.io>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/ItayGarin/ktrl"
+distfiles="https://crates.io/api/v1/crates/${pkgname}/${version}/download>ktrl-${version}.tar.gz"
+checksum=ed2c442697225614263a946dbb3891c79d060dfdf56dbc96f919f541bf69f5b4
