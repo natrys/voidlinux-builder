@@ -1,0 +1,22 @@
+# Template file for 'inputplug'
+pkgname=inputplug
+version=0.3
+revision=1
+build_style=gnu-makefile
+hostmakedepends="pkg-config perl"
+makedepends="libxcb-devel libXi-devel libXfixes-devel"
+short_desc="XInput event monitor daemon"
+maintainer="Imran Khan <imrankhan@teknik.io>"
+license="MIT"
+homepage="https://github.com/andrewshadura/inputplug"
+distfiles="https://github.com/andrewshadura/inputplug/archive/refs/tags/${version}.tar.gz"
+checksum=acac8e3972f3f10f9b6791321d2441e6b54d93d97c2de81e13eb14734a635ef7
+
+do_install() {
+	vbin ./inputplug
+	vdoc ./inputplug.1
+}
+
+post_install() {
+	vlicense LICENSE
+}
