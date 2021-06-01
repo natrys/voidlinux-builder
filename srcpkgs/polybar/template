@@ -1,10 +1,10 @@
 # Template file for 'polybar'
 pkgname=polybar
-version=3.5.5
-_commit=2901e1e4769e8ffcf2def9ced9b7bda02763294c
+version=3.5.6
+_commit=bfa9b5d53e72ea0ba4153cf171875ad7811cee21
 _xpp_commit=7a9960bbb912f0ed66929c978aaeb1c30acf4bfd
 wrksrc=${pkgname}-${_commit}
-revision=2
+revision=1
 build_style=cmake
 skip_extraction="xpp.tar.gz"
 configure_args="
@@ -30,7 +30,7 @@ license="MIT"
 homepage="https://github.com/polybar/polybar"
 distfiles="https://github.com/polybar/polybar/archive/${_commit}.tar.gz
   https://github.com/polybar/xpp/archive/${_xpp_commit}.tar.gz>xpp.tar.gz"
-checksum="0411fd398d243511c1c029c81c1259eeffc7b66639defdfae2ad90a4df076c0b
+checksum="a3a054d2a7f15de9fed6047538d62e85b4096c2a95add6d696e4589c64ceee91
   03acbb18ade967e6ed4b5250d3c354d9023e40ff56b1a7ef288a4b8f77bf9844"
 
 build_options="alsa curl i3 mpd network pulseaudio"
