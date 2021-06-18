@@ -1,8 +1,8 @@
 # Template file for 'factor'
 pkgname=factor
-version=20210329
+version=20210602
 revision=1
-_commit=a4aaac4f4c293fcd08b5ef35821fe88fd370597a
+_commit=b989a860d1d6191bb9c5911ac77ed0931424eaeb
 wrksrc=${pkgname}-${_commit}
 archs="i686 x86_64"
 build_style=gnu-makefile
@@ -15,7 +15,7 @@ maintainer="Imran Khan <imrankhan@teknik.io>"
 license="BSD-2-Clause"
 homepage="http://factorcode.org/"
 distfiles="https://github.com/factor/factor/archive/${_commit}.tar.gz"
-checksum=4775f9d085d8f59f80d7d439e9ee397af1c47b18e34ad39353f9169ddaf8f86d
+checksum=b506f4ebb71c610abecb9a9c0a1a82521b029a527a44e8cae57b793949d6e012
 
 post_build() {
 	wget https://downloads.factorcode.org/images/master/boot.unix-x86.64.image
