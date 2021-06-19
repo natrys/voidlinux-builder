@@ -1,0 +1,34 @@
+# Template file for 'maddy'
+pkgname=maddy
+version=0.4.4
+revision=1
+build_style=go
+go_import_path="github.com/foxcpp/maddy"
+short_desc="Composable all-in-one mail server"
+maintainer="Imran Khan <imrankhan@teknik.io>"
+license="GPL-3.0-or-later"
+homepage="https://maddy.email/"
+distfiles="https://github.com/foxcpp/maddy/archive/refs/tags/v${version}.tar.gz"
+checksum=e92d96f249cfa75594695a94f57e0dc76f38f34bc097d6ed97ad0eb839b5ed50
+
+pre_build() {
+	vsed -i ./build.sh \
+		-e '\#^prefix#s#=.*#=/usr#' \
+		-e "\#^destdir#s#=.*#=${DESTDIR}#"
+}
+
+do_build() {
+	if [ "$XBPS_TARGET_LIBC" = "musl" ]; then
+		./build.sh build --static
+	else
+		./build.sh build
+	fi
+}
+
+do_install() {
+	./build.sh install
+}
+
+post_install() {
+	rm -rf ${DESTDIR}/usr/lib/systemd/
+}
