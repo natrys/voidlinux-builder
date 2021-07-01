@@ -1,14 +1,16 @@
 # Template file for 'dendrite'
 pkgname=dendrite
 version=0.3.10
+_commit=2647f6e9c5887db30104bc303c326f79ab4a0dae
 revision=1
-hostmakedepends="go"
+wrksrc=dendrite-${_commit}
+build_style=go
 short_desc="Matrix homeserver written in Go"
 maintainer="Imran Khan <imrankhan@teknik.io>"
 license="Apache-2.0"
 homepage="https://github.com/matrix-org/dendrite/"
-distfiles="https://github.com/matrix-org/dendrite/archive/v${version}.tar.gz"
-checksum=a2ad6a43326a7f19978b8b9097f3cc0ae3ad11abb5cbac62be24a61038e94e9c
+distfiles="https://github.com/matrix-org/dendrite/archive/${_commit}.tar.gz"
+checksum=133d9049aff7b7ae8e06a9c3d71ae473209d8c8b602560f98d33c4427a6b5db7
 nopie=yes
 
 do_build() {
