@@ -1,67 +1,40 @@
 # Template file for 'libgccjit'
-_majorver=10
-_minorver=${_majorver}.2
+_majorver=11
+_minorver=${_majorver}.0
 _patchver=${_minorver}.1
-
-#_majorver=11
-#_minorver=${_majorver}.0
-#_patchver=${_minorver}.1
 
 pkgname=libgccjit
 # we are using a 10-stable git snapshot alpine is using in order
 # to get regression fixes not yet incorporate into a stable release
 # it should be possible to switch back to stable with 10.3 or 11
-version=${_patchver}pre1
-wrksrc=gcc-${version/pre/_pre}
-#version=${_patchver}git20210328
-#wrksrc=gcc-${version/git/_git}
-revision=2
-#revision=1
+version=${_patchver}git20210328
+wrksrc=gcc-${version/git/_git}
+revision=1
 build_style=gnu-configure
 configure_args="--with-system-zlib
- --with-linker-hash-style=gnu
- --enable-languages=jit
  --disable-multilib
  --disable-bootstrap
  --disable-libssp
- --disable-lto
  --disable-libquadmath
  --disable-liboffloadmic
  --disable-libada
- --disable-libsanitizer
  --disable-libquadmath-support
  --disable-libgomp
  --disable-libvtv
  --disable-libsanitizer
- --disable-libstdcxx-pch
- --disable-libunwind-exceptions
- --disable-werror
- --enable-__cxa_atexit
- --enable-cet=auto
+ --disable-lto
  --enable-checking=release
- --enable-clocale=gnu
- --enable-default-pie
- --enable-default-ssp
- --enable-gnu-indirect-function
- --enable-gnu-unique-object
- --enable-install-libiterty
- --enable-linker-build-id
- --enable-plugin
- --enable-shared
  --enable-host-shared
- --enable-threads=posix
- "
+ --enable-shared
+ --enable-languages=jit"
 hostmakedepends="flex pkg-config tar"
 makedepends="gmp-devel mpfr-devel libmpc-devel zlib-devel"
 short_desc="Just-In-Time Compilation using GCC"
-depends="libgcc"
 maintainer="Imran Khan <imrankhan@teknik.io>"
 license="GPL-3.0-or-later"
 homepage="https://gcc.gnu.org/wiki/JIT"
-distfiles="https://dev.alpinelinux.org/~nenolod/gcc-${version/pre/_pre}.tar.xz"
-#distfiles="https://dev.alpinelinux.org/~nenolod/gcc-${version/git/_git}.tar.xz"
-checksum=772cfd5d30eb9cc5a996fec9ba8cdcb45d37df1c9b5770610103b814b732c590
-#checksum=8f238742dd703b9b4e3bc63413aa3f777dd5e1d0057dc5b9b0cd85bcd7c0ad4a
+distfiles="https://dev.alpinelinux.org/~nenolod/gcc-${version/git/_git}.tar.xz"
+checksum=8f238742dd703b9b4e3bc63413aa3f777dd5e1d0057dc5b9b0cd85bcd7c0ad4a
 
 post_install() {
 	rm -rf ${DESTDIR}/usr/bin
