@@ -1,7 +1,7 @@
 # Template file for 'fdpp'
 pkgname=fdpp
 version=1.3
-revision=1
+revision=2
 _api=API30
 archs="x86_64"
 wrksrc=${pkgname}-${_api}
@@ -17,6 +17,8 @@ homepage="https://github.com/dosemu2/fdpp"
 distfiles="https://github.com/dosemu2/fdpp/archive/refs/tags/${_api}.tar.gz"
 checksum=6b3ed3d54fe9ca22b1c5539c2ef808875b9b620691a86378b64170d267f3e061
 shlib_provides="libfdpp.so"
+ignore_elf_files="/usr/share/fdpp/fdppkrnl.elf"
+nostrip_files="/usr/share/fdpp/fdppkrnl.elf"
 
 pre_build() {
 	vsed -i fdpp/defs.mak -e 's|/usr/local|/usr|'
