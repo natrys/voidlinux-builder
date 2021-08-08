@@ -1,0 +1,24 @@
+# Template file for 'keyd'
+pkgname=keyd
+version=0.0.2
+revision=1
+_commit=f5d0c0477330d723296150282b69e956e3aab887
+wrksrc=${pkgname}-${_commit}
+build_style=gnu-makefile
+makedepends="eudev-libudev-devel"
+short_desc="Key remapping daemon for Linux"
+maintainer="Imran Khan <imrankhan@teknik.io>"
+license="MIT"
+homepage="https://github.com/rvaiya/keyd"
+distfiles="https://github.com/rvaiya/keyd/archive/${_commit}.tar.gz"
+checksum=827cc468b283343719f0d9b7b1fe1cf0c0b07ca91c1a30db691a5295eb64be93
+
+export CFLAGS+="-DVERSION=\\\"${version}\\\" -DGIT_COMMIT_HASH=\\\"${_commit}\\\""
+
+pre_build() {
+        vsed -i -e 's/-O3//; /systemd/d' Makefile
+}
+
+post_install() {
+        vlicense LICENSE
+}
