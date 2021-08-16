@@ -2,7 +2,7 @@
 pkgname=dendrite
 version=0.4.1
 _commit=125ea75b2419aa5ebf58506e3fbd03a90eb06d68
-revision=1
+revision=2
 wrksrc=dendrite-${_commit}
 build_style=go
 go_import_path="github.com/matrix-org/dendrite"
@@ -20,6 +20,8 @@ do_build() {
 }
 
 do_install() {
+  rm bin/dendrite-demo-*
+  rm bin/dendritejs*
 	vmkdir opt/dendrite/bin/
 	vcopy bin/* opt/dendrite/bin/
 	vlicense LICENSE
