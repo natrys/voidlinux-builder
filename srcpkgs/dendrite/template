@@ -1,8 +1,8 @@
 # Template file for 'dendrite'
 pkgname=dendrite
-version=0.4.0
-_commit=b954343d734a4798b14d886d0d851ff9e526117d
-revision=0
+version=0.4.1
+_commit=125ea75b2419aa5ebf58506e3fbd03a90eb06d68
+revision=1
 wrksrc=dendrite-${_commit}
 build_style=go
 go_import_path="github.com/matrix-org/dendrite"
@@ -11,7 +11,7 @@ maintainer="Imran Khan <imrankhan@teknik.io>"
 license="Apache-2.0"
 homepage="https://github.com/matrix-org/dendrite/"
 distfiles="https://github.com/matrix-org/dendrite/archive/${_commit}.tar.gz"
-checksum=cbd5d8816a5a013df46ad7ffbca0a6df7332e8b411c2930e75a99fd92d6f7539
+checksum=ad230eb9511186bfa12c76af7a77453f1fab58f84032267be879740b8c88e7f9
 nopie=yes
 
 do_build() {
