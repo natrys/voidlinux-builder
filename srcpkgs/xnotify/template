@@ -1,8 +1,8 @@
 # Template file for 'xnotify'
 pkgname=xnotify
 version=0.8.1
-revision=2
-_commit=6bd1adc8ba2f140dbc81d8237e22b41a01fb6c91
+revision=3
+_commit=d11579c78ada96429bb826c3d0ec177406892485
 wrksrc=${pkgname}-${_commit}
 build_style=gnu-makefile
 make_use_env=yes
@@ -12,7 +12,7 @@ maintainer="Imran Khan <imrankhan@teknik.io>"
 license="MIT"
 homepage="https://github.com/phillbush/xnotify"
 distfiles="https://github.com/phillbush/xnotify/archive/${_commit}.tar.gz"
-checksum=e989b2f3298688db3f914f64bb07658aa4300fa03830db0733af479ecba11d1b
+checksum=425737fef3f8083ea240f11c27bdeb588d62244f98c4b74477cd2d9a189d8543
 
 pre_build() {
 	vsed -i config.mk -e 's|/local||' \
