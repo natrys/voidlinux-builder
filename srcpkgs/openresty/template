@@ -1,7 +1,7 @@
 # Template file for 'openresty'
 pkgname=openresty
-version=1.19.9.1rc1
-revision=2
+version=1.19.9.1
+revision=1
 build_style=configure
 hostmakedepends="perl"
 makedepends="openssl-devel pcre-devel $(vopt_if geoip geoip-devel)"
@@ -10,7 +10,7 @@ maintainer="Imran Khan <imrankhan@teknik.io>"
 license="BSD-2-Clause, BSD"
 homepage="https://openresty.org/"
 distfiles="https://openresty.org/download/openresty-${version}.tar.gz"
-checksum=89d2d1e0abf8776ef476528f9ca0392c1cf42fb1e17a69659c91025ff9b69143
+checksum=576ff4e546e3301ce474deef9345522b7ef3a9d172600c62057f182f3a68c1f6
 
 system_accounts="openresty"
 make_dirs="/var/log/openresty 0750 root root
