@@ -1,8 +1,8 @@
 pkgname=emacs-nativecomp
 version=28.0.50
-_commit=dcf84bce2500ad2c632ae1d19d6b93324f55e25e
+_commit=6dad558a9d3478adf3ece5b83a0710ffa6fc5bc9
 wrksrc=emacs-${_commit}
-revision=28
+revision=29
 build_style=gnu-configure
 configure_args="--with-file-notification=inotify --with-modules --with-native-compilation
  $(vopt_with jpeg) $(vopt_with tiff) $(vopt_with gif) $(vopt_with png)
@@ -24,7 +24,7 @@ maintainer="Imran Khan <imrankhan@teknik.io>"
 license="GPL-3.0-or-later"
 homepage="http://www.gnu.org/software/emacs/"
 distfiles="https://github.com/emacs-mirror/emacs/archive/${_commit}.tar.gz"
-checksum=75f7214fb74514dc4fc9747f0c95eb4baca27b4e53e24782f760dbe9edcdfbbb
+checksum=d99443e716fc8a6ea40df58dbc4b5119dba6b285108721a8fb66e1f99775fa66
 replaces="emacs>=0"
 nocross=yes
 nopie=yes
