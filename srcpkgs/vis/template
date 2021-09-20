@@ -1,12 +1,12 @@
 # Template file for 'vis'
 pkgname=vis
 version=20210420
-revision=1
+revision=2
 _commit=1a958f221404b09cb8b0612fb34301e6b9783cf9
 wrksrc=${pkgname}-${_commit}
 build_style=gnu-configure
 hostmakedepends="pkg-config"
-makedepends="libtermkey-devel lua53-devel"
+makedepends="libtermkey-devel ncurses-devel lua53-devel"
 depends="lua53-lpeg"
 short_desc="Tiny vim like editor"
 maintainer="Imran Khan <imrankhan@teknik.io>"
