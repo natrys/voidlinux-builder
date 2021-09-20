@@ -1,8 +1,8 @@
 # Template file for 'vis'
 pkgname=vis
-version=20201120
+version=20210420
 revision=1
-_commit=5566e920cb06d40ca689138dcd608d6761fa8e3a
+_commit=1a958f221404b09cb8b0612fb34301e6b9783cf9
 wrksrc=${pkgname}-${_commit}
 build_style=gnu-configure
 hostmakedepends="pkg-config"
@@ -13,7 +13,7 @@ maintainer="Imran Khan <imrankhan@teknik.io>"
 license="ISC"
 homepage="https://github.com/martanne/vis"
 distfiles="https://github.com/martanne/vis/archive/${_commit}.tar.gz"
-checksum=67099359d0f1746680ac07fb6ff9a94a79fe7991f0a9516016676f8c7b15e23f
+checksum=9887898b7177bca8b1127712f29223f14ad59c5a48d662917b7ed3b6575e01d7
 conflicts="outils" # /usr/bin/vis
 
 post_install() {
