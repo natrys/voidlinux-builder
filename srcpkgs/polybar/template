@@ -1,7 +1,7 @@
 # Template file for 'polybar'
 pkgname=polybar
-version=3.5.6
-_commit=bfa9b5d53e72ea0ba4153cf171875ad7811cee21
+version=3.5.7
+_commit=55eb19fdc791b7ab5bfae9c5ceea9ef552f04113
 _xpp_commit=7a9960bbb912f0ed66929c978aaeb1c30acf4bfd
 wrksrc=${pkgname}-${_commit}
 revision=1
@@ -17,7 +17,7 @@ configure_args="
  -DWITH_XCOMPOSITE=ON"
 hostmakedepends="pkg-config xcb-proto python3 python3-Sphinx"
 makedepends="cairo-devel xcb-util-image-devel xcb-util-wm-devel xcb-util-xrm-devel
- zlib-devel xcb-util-renderutil-devel xcb-util-cursor-devel libxcb-devel
+ zlib-devel xcb-util-renderutil-devel xcb-util-cursor-devel libxcb-devel libuv-devel
  $(vopt_if alsa "alsa-lib-devel")
  $(vopt_if curl "libcurl-devel")
  $(vopt_if i3 "i3-devel jsoncpp-devel")
@@ -30,7 +30,7 @@ license="MIT"
 homepage="https://github.com/polybar/polybar"
 distfiles="https://github.com/polybar/polybar/archive/${_commit}.tar.gz
   https://github.com/polybar/xpp/archive/${_xpp_commit}.tar.gz>xpp.tar.gz"
-checksum="a3a054d2a7f15de9fed6047538d62e85b4096c2a95add6d696e4589c64ceee91
+checksum="ef5d298761cb7fed69aceaf932690b113c7aa1b6c0241f769772866bc39d6c05
   03acbb18ade967e6ed4b5250d3c354d9023e40ff56b1a7ef288a4b8f77bf9844"
 
 build_options="alsa curl i3 mpd network pulseaudio"
