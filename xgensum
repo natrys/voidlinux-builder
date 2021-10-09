@@ -1,0 +1,10 @@
+#!/bin/sh
+template=$PWD/srcpkgs/$1/template
+. $template
+
+mkdir -p /tmp/voidbuilder/
+cd /tmp/voidbuilder/
+wget -O src $distfiles
+shasum=$(sha256sum src | cut -f1 -d' ')
+sed -i -E "\|^checksum|s|=.*|=$shasum|" $template
+rm src
