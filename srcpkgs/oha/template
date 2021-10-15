@@ -1,6 +1,6 @@
 # Template file for 'oha'
 pkgname=oha
-version=0.4.6
+version=0.4.7
 revision=1
 build_style=cargo
 hostmakedepends="pkg-config"
@@ -10,4 +10,4 @@ maintainer="Imran Khan <imrankhan@teknik.io>"
 license="MIT"
 homepage="https://github.com/hatoo/oha"
 distfiles="https://github.com/hatoo/oha/archive/v${version}.tar.gz"
-checksum=b08f4953c6f77a80882dd9b13735ca4a63f14ada1b51d619f17e58a6fa085262
+checksum=92cb24c6c6730f774f043c6b62197d7364a6f75c964621bf8b14961c81de0c1a
