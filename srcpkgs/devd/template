@@ -1,0 +1,18 @@
+# Template file for 'devd'
+pkgname=devd
+_commit=c1a3bfba27d8e028de90fb24452374412a4cffb3
+version=0.9
+revision=1
+wrksrc=${pkgname}-${_commit}
+build_style=go
+go_import_path="github.com/cortesi/devd/cmd/devd"
+short_desc="Local webserver for developers"
+maintainer="Imran Khan <imrankhan@teknik.io>"
+license="MIT"
+homepage="https://github.com/cortesi/devd"
+distfiles="https://github.com/cortesi/devd/archive/${_commit}.tar.gz"
+checksum=b846c2aa056a3639086144a424815232ca1d3edc42c7d624383271258361981f
+
+post_install() {
+	vlicense LICENSE
+}
