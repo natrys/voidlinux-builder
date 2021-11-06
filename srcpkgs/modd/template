@@ -1,0 +1,18 @@
+# Template file for 'devd'
+pkgname=modd
+_commit=b35eddab86ccfab46172b21e5608b4bc1c83a8d0
+version=0.8
+revision=1
+wrksrc=${pkgname}-${_commit}
+build_style=go
+go_import_path="github.com/cortesi/modd/cmd/modd"
+short_desc="Local webserver for developers"
+maintainer="Imran Khan <imrankhan@teknik.io>"
+license="MIT"
+homepage="https://github.com/cortesi/modd"
+distfiles="https://github.com/cortesi/modd/archive/${_commit}.tar.gz"
+checksum=f7dd811981e0bbdbd20c3d117b0f9ec4860af517b7f99771ef565f4b4b9f258d
+
+post_install() {
+	vlicense LICENSE
+}
