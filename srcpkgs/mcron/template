@@ -1,6 +1,6 @@
 # Template file for 'mcron'
 pkgname=mcron
-version=1.2.0
+version=1.2.1
 revision=1
 build_style=gnu-configure
 hostmakedepends="pkg-config guile"
@@ -11,4 +11,4 @@ maintainer="Imran Khan <imrankhan@teknik.io>"
 license="GPL-3"
 homepage="https://www.gnu.org/software/mcron/"
 distfiles="https://ftp.gnu.org/gnu/mcron/mcron-${version}.tar.gz"
-checksum=2d934da84db7dcb988778f55f43a74f699d5825c4900d13ef178965682cd2dd6
+checksum=20fe726c8c53e00261a3a8e191051228b07558292de5abe3714445f1ca10762e
