@@ -1,8 +1,8 @@
 pkgname=emacs-master
 version=29.0.50
-_commit=e6e29b435273ee9821b6536581bd151f3e50737d
+_commit=023dc2ac8fb004c16748fa98223a1fb88cfa2186
 wrksrc=emacs-${_commit}
-revision=1
+revision=2
 build_style=gnu-configure
 configure_args="--with-file-notification=inotify --with-modules
  $(vopt_with jpeg) $(vopt_with tiff) $(vopt_with gif) $(vopt_with png)
@@ -24,11 +24,11 @@ maintainer="Imran Khan <imrankhan@teknik.io>"
 license="GPL-3.0-or-later"
 homepage="http://www.gnu.org/software/emacs/"
 distfiles="https://github.com/emacs-mirror/emacs/archive/${_commit}.tar.gz"
-checksum=ee4e29620b119ab9a4c1079627cce25692e64493caba4edfe292e74ac17eb26f
-replaces="emacs>=0 emacs-nativecomp>=0"
+checksum=acb4350931e37ad6e18921f4d78c8fec7187bec8e805399a47b7208a4a19960f
+replaces="emacs>=0 emacs-28>=0 emacs-nativecomp>=0"
 nocross=yes
 nopie=yes
-conflicts="emacs>=0 emacs-nativecomp>=0"
+conflicts="emacs>=0 emacs-28>=0 emacs-nativecomp>=0"
 
 # Package build options
 build_options="jpeg tiff gif png xpm svg xml imagemagick gnutls sound m17n json harfbuzz cairo lcms"
