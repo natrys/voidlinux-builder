@@ -1,8 +1,8 @@
 # Template file for 'weechat-discord'
 pkgname=weechat-discord
 version=0.1
-revision=5
-_commit=d8f5cdc14dd0b86442c281e148ad9e3be4fd0e4c
+revision=6
+_commit=21288556f333b92df91a573163f166e338fd8a93
 wrksrc=${pkgname}-${_commit}
 build_style=cargo
 build_helper=rust
@@ -13,7 +13,7 @@ maintainer="Imran Khan <imrankhan@teknik.io>"
 license="MIT"
 homepage="https://github.com/terminal-discord/weechat-discord"
 distfiles="https://github.com/terminal-discord/weechat-discord/archive/${_commit}.tar.gz"
-checksum=11f9611bcb8cdaab0a75628d710104d872bc5cba261744a4eedff7d9e5df89a1
+checksum=8b5ce224fc27bdcf5d76d5b0053b6e39ccd4f17f2aef7b09d6733139111abbc7
 
 do_install() {
   vlicense LICENSE
