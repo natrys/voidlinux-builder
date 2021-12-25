@@ -1,8 +1,8 @@
 pkgname=emacs-master
 version=29.0.50
-_commit=92ed2fe6886a367f00cf04a11d39b4fbf7a44edc
+_commit=f03d0de26fc718058567951ed46dc6772638928c
 wrksrc=emacs-${_commit}
-revision=5
+revision=6
 build_style=gnu-configure
 configure_args="--with-file-notification=inotify --with-modules
  $(vopt_with jpeg) $(vopt_with tiff) $(vopt_with gif) $(vopt_with png)
@@ -24,7 +24,7 @@ maintainer="Imran Khan <imrankhan@teknik.io>"
 license="GPL-3.0-or-later"
 homepage="http://www.gnu.org/software/emacs/"
 distfiles="https://github.com/emacs-mirror/emacs/archive/${_commit}.tar.gz"
-checksum=6251a88b5c7df0f90c09b603d084e99a9617bc59577fc6265829ae27b4b34c7b
+checksum=aab54f9c1ac53a4eb9fcfe3a5c4179a4032974a84695fb26c45e66dbfa84b83b
 replaces="emacs>=0 emacs-28>=0 emacs-nativecomp>=0"
 nocross=yes
 nopie=yes
