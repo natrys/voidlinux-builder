@@ -1,7 +1,7 @@
 # Template file for 'TimescaleDB'
 pkgname=TimescaleDB
 version=2.5.1
-revision=1
+revision=2
 wrksrc="timescaledb-${version}"
 build_style=cmake
 configure_args="-DREGRESS_CHECKS=OFF -DTAP_CHECKS=OFF -DCMAKE_BUILD_TYPE=Release"
