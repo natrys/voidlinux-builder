@@ -1,0 +1,27 @@
+# Template file for 'scryer-prolog'
+pkgname=scryer-prolog
+version=0.8.127
+_commit=9ded1447ece6547f775b61d860579bef68af1260
+wrksrc=${pkgname}-${_commit}
+revision=1
+build_style=cargo
+hostmakedepends="m4 pkg-config"
+makedepends="gmp-devel mpfr-devel libmpc-devel openssl-devel libsodium-devel"
+short_desc="Modern Prolog implementation written mostly in Rust"
+maintainer="Hans-J. Schmid <knock@myopendoor.de>"
+license="BSD-3-Clause"
+homepage="https://github.com/mthom/scryer-prolog"
+distfiles="https://github.com/mthom/scryer-prolog/archive/${_commit}.tar.gz"
+checksum=ba68f078580072a20fc5de369e5e8b73cad48137819f0a276cf601cdc7f85ec7
+nocross="executes gmp header https://gitlab.com/tspiteri/gmp-mpfr-sys/-/blob/v1.2.2/build.rs#L1278"
+export CARGO_FEATURE_USE_SYSTEM_LIBS=1
+export SODIUM_SHARED=1
+
+case "$XBPS_TARGET_MACHINE" in
+        x86_64*|i686*|arm*|aarch64*) ;;
+        *) broken="ftbfs in ring" ;;
+esac
+
+post_install() {
+        vlicense LICENSE
+}
