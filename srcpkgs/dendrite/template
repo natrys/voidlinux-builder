@@ -1,7 +1,7 @@
 # Template file for 'dendrite'
 pkgname=dendrite
-version=0.5.1
-_commit=403498a85bf9b5e4900d428ff85bd0184e409ea0
+version=0.6
+_commit=2c3dd48bb2daf078fe2e36c3a06a995fcd693d20
 revision=1
 wrksrc=dendrite-${_commit}
 build_style=go
@@ -11,7 +11,7 @@ maintainer="Imran Khan <imrankhan@teknik.io>"
 license="Apache-2.0"
 homepage="https://github.com/matrix-org/dendrite/"
 distfiles="https://github.com/matrix-org/dendrite/archive/${_commit}.tar.gz"
-checksum=039ef032458c53f7eb3dbc770f1cce563895a7e1265e66c562bbaaad10bb4b86
+checksum=e7b74f8264ac3032f9a2bc6dd1a422e6a817ae1304931578465666395e080c0e
 nopie=yes
 
 do_build() {
@@ -20,8 +20,8 @@ do_build() {
 }
 
 do_install() {
-  rm bin/dendrite-demo-*
-  rm bin/dendritejs*
+	rm bin/dendrite-demo-*
+	rm bin/dendritejs*
 	vmkdir opt/dendrite/bin/
 	vcopy bin/* opt/dendrite/bin/
 	vlicense LICENSE
