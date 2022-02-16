@@ -1,6 +1,6 @@
 # Template file for 'maddy'
 pkgname=maddy
-version=0.5.2
+version=0.5.3
 revision=1
 build_style=go
 go_import_path="github.com/foxcpp/maddy"
@@ -9,7 +9,7 @@ maintainer="Imran Khan <imrankhan@teknik.io>"
 license="GPL-3.0-or-later"
 homepage="https://maddy.email/"
 distfiles="https://github.com/foxcpp/maddy/archive/refs/tags/v${version}.tar.gz"
-checksum=0d670cb65936266b6773121ff0dabbf84309d7281c204a1c694d84dd633bc50e
+checksum=00718160363f4886b9f1b9a9da481873f583f2949c21927c0d24e2bb1b68dd82
 
 pre_build() {
 	vsed -i ./build.sh \
