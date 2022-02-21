@@ -1,8 +1,8 @@
 # Template file for 'polybar'
 pkgname=polybar
 version=3.5.7
-revision=3
-_commit=9b5611af3ffa4c37d755109ba3d94db0690f1718
+revision=4
+_commit=62da14e30d79219dc84d8d76abf14b619aff4ab4
 _xpp_commit=7a9960bbb912f0ed66929c978aaeb1c30acf4bfd
 wrksrc=${pkgname}-${_commit}
 build_style=cmake
@@ -29,7 +29,7 @@ license="MIT"
 homepage="https://github.com/polybar/polybar"
 distfiles="https://github.com/polybar/polybar/archive/${_commit}.tar.gz
  https://github.com/polybar/xpp/archive/${_xpp_commit}.tar.gz>xpp.tar.gz"
-checksum="905fecea2c7e05c1cbf08f089e1724df2a0d5ec712ad657bc58ef3e0ac61d3be
+checksum="d843dcbb8c355a6e08bca43e9c5b08d5e84ae94dcc76b93ae2b699d7c5b88f58
  03acbb18ade967e6ed4b5250d3c354d9023e40ff56b1a7ef288a4b8f77bf9844"
 skip_extraction="xpp.tar.gz"
 
