@@ -1,15 +1,15 @@
 pkgname=emacs-master
 version=29.0.50
-_commit=435d5c84ed200b24b0cd5b51fa77026e861eff3f
+_commit=ca8f4ebc492c470ec041e11f5d5b005c6d0d44e6
 wrksrc=emacs-${_commit}
-revision=13
+revision=14
 build_style=gnu-configure
 configure_args="--with-file-notification=inotify --with-modules
  $(vopt_with jpeg) $(vopt_with tiff) $(vopt_with gif) $(vopt_with png)
  $(vopt_with xpm) $(vopt_with svg rsvg) $(vopt_with imagemagick) $(vopt_with json)
  $(vopt_with xml xml2) $(vopt_with gnutls) $(vopt_with sound) $(vopt_with m17n m17n-flt)
  $(vopt_with harfbuzz) $(vopt_with cairo) $(vopt_with lcms) $(vopt_with gmp)
- $(vopt_with sqlite)"
+ $(vopt_with sqlite) $(vopt_with xinput2)"
 hostmakedepends="pkg-config autoconf texinfo tar"
 makedepends="ncurses-devel libXaw-devel
  dbus-devel acl-devel zlib-devel
@@ -20,24 +20,24 @@ makedepends="ncurses-devel libXaw-devel
  $(vopt_if sound alsa-lib-devel) $(vopt_if m17n m17n-lib-devel)
  $(vopt_if harfbuzz harfbuzz-devel) $(vopt_if cairo cairo-devel)
  $(vopt_if lcms lcms2-devel) $(vopt_if gmp gmp-devel)
- $(vopt_if sqlite sqlite-devel)"
+ $(vopt_if sqlite sqlite-devel) $(vopt_if xinput2 libXi-devel)"
 short_desc="GNU Emacs editor (28.0.60/pre-release)"
 maintainer="Imran Khan <imrankhan@teknik.io>"
 license="GPL-3.0-or-later"
 homepage="http://www.gnu.org/software/emacs/"
 distfiles="https://github.com/emacs-mirror/emacs/archive/${_commit}.tar.gz"
-checksum=a41da02fbe447b19c2929d785cc4480beb6717136defe3daa4664e95944db724
+checksum=1e1b531971f4f5cbf3011ad7cde5e00130bc0a46368ecbf6bb701266d624acea
 replaces="emacs>=0 emacs-28>=0 emacs-nativecomp>=0"
 nocross=yes
 nopie=yes
 conflicts="emacs>=0 emacs-28>=0 emacs-nativecomp>=0"
 
 # Package build options
-build_options="jpeg tiff gif png xpm svg xml imagemagick gnutls sound m17n json harfbuzz cairo lcms sqlite"
+build_options="jpeg tiff gif png xpm svg xml imagemagick gnutls sound m17n json harfbuzz cairo lcms sqlite xinput2"
 desc_option_xpm="Enable support for XPM images"
 desc_option_sound="Enable support for sound"
 desc_option_m17n="Enable support for m17n multilingual text processing"
-build_options_default="jpeg tiff gif png xpm svg xml gnutls sound m17n json harfbuzz cairo imagemagick lcms gmp sqlite"
+build_options_default="jpeg tiff gif png xpm svg xml gnutls sound m17n json harfbuzz cairo imagemagick lcms gmp sqlite xinput2"
 
 do_configure() {
 	./autogen.sh
