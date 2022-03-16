@@ -1,7 +1,7 @@
 # Template file for 'scryer-prolog'
 pkgname=scryer-prolog
-version=0.8.127
-_commit=9ded1447ece6547f775b61d860579bef68af1260
+version=0.9.0
+_commit=895b02b64196cf899400401fe0d365e932270cca
 wrksrc=${pkgname}-${_commit}
 revision=1
 build_style=cargo
@@ -12,7 +12,7 @@ maintainer="Hans-J. Schmid <knock@myopendoor.de>"
 license="BSD-3-Clause"
 homepage="https://github.com/mthom/scryer-prolog"
 distfiles="https://github.com/mthom/scryer-prolog/archive/${_commit}.tar.gz"
-checksum=ba68f078580072a20fc5de369e5e8b73cad48137819f0a276cf601cdc7f85ec7
+checksum=6cd88f01faef7bfe9c5a098eaccb5ad53384cfb5deaadb5883cc6f6d96874a4c
 nocross="executes gmp header https://gitlab.com/tspiteri/gmp-mpfr-sys/-/blob/v1.2.2/build.rs#L1278"
 export CARGO_FEATURE_USE_SYSTEM_LIBS=1
 export SODIUM_SHARED=1
