@@ -1,6 +1,6 @@
 # Template file for 'oha'
 pkgname=oha
-version=0.4.7
+version=0.5.1
 revision=1
 build_style=cargo
 hostmakedepends="pkg-config"
@@ -9,5 +9,5 @@ short_desc="HTTP load generator with TUI animation"
 maintainer="Imran Khan <imrankhan@teknik.io>"
 license="MIT"
 homepage="https://github.com/hatoo/oha"
-distfiles="https://github.com/hatoo/oha/archive/v${version}.tar.gz"
-checksum=92cb24c6c6730f774f043c6b62197d7364a6f75c964621bf8b14961c81de0c1a
+distfiles="https://github.com/hatoo/oha/archive/refs/tags/v${version}.tar.gz"
+checksum=1879b2e155679241560ce805965bbd7ac5fb1b602115d97b2b31afe8a0964051
