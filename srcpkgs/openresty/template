@@ -1,6 +1,6 @@
 # Template file for 'openresty'
 pkgname=openresty
-version=1.19.9.1
+version=1.21.4.1
 revision=1
 build_style=configure
 hostmakedepends="perl"
@@ -10,7 +10,7 @@ maintainer="Imran Khan <imrankhan@teknik.io>"
 license="BSD-2-Clause, BSD"
 homepage="https://openresty.org/"
 distfiles="https://openresty.org/download/openresty-${version}.tar.gz"
-checksum=576ff4e546e3301ce474deef9345522b7ef3a9d172600c62057f182f3a68c1f6
+checksum=0c5093b64f7821e85065c99e5d4e6cc31820cfd7f37b9a0dec84209d87a2af99
 
 system_accounts="openresty"
 make_dirs="/var/log/openresty 0750 root root
