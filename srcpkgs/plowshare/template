@@ -1,0 +1,12 @@
+# Template file for 'plowshare'
+pkgname=plowshare
+version=2.1.7
+revision=1
+build_style=gnu-makefile
+depends="curl recode mozjs78"
+short_desc="Tool and engine for managing sharing websites"
+maintainer="Imran Khan <imrankhan@teknik.io>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/mcrapet/plowshare"
+distfiles="https://github.com/mcrapet/plowshare/archive/refs/tags/v${version}.tar.gz"
+checksum=c17d0cc1b3323f72b2c1a5b183a9fcef04e8bfc53c9679a4e1523642310d22ad
