@@ -1,0 +1,19 @@
+# Template file for 'sxhkd'
+pkgname=sxhkd
+version=0.6.2
+_commit=4d9580d553b040b1df5eae768a86020c1058ba89
+wrksrc=${pkgname}-${_commit}
+revision=2
+build_style=gnu-makefile
+make_use_env=yes
+makedepends="libxcb-devel xcb-util-devel xcb-util-keysyms-devel"
+short_desc="Simple X HotKey Daemon"
+maintainer="Imran Khan <imrankhan@teknik.io>"
+license="BSD-2-Clause"
+homepage="https://github.com/natrys/sxhkd"
+distfiles="https://github.com/natrys/sxhkd/archive/${_commit}.tar.gz"
+checksum=6331884edfaa271437b54753e478a4c67d2ce7abe59698dd822f08057559ed60
+
+post_install() {
+	vlicense LICENSE
+}
