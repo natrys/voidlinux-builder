@@ -1,0 +1,13 @@
+diff --git a/sh.h b/sh.h
+index 85fdee4e..97248999 100644
+--- a/sh.h
++++ b/sh.h
+@@ -1575,7 +1575,7 @@ EXTERN char ifs0;
+ /* a‥z			lowercase letters */
+ #define C_LOWER	CiLOWER
+ /* not alnux or dollar	separator for motion */
+-#define C_MFS	(CiALIAS | CiANGLE | CiBRACK | CiCNTRL | CiCOLON | CiCR | CiCURLY | CiEQUAL | CiGRAVE | CiHASH | CiMINUS | CiNL | CiNUL | CiPERCT | CiPLUS | CiQC | CiQCL | CiQCM | CiQCX | CiQUEST | CiSP | CiSPX | CiTAB)
++#define C_MFS	(CiALIAS | CiANGLE | CiBRACK | CiCNTRL | CiCOLON | CiCR | CiCURLY | CiEQUAL | CiGRAVE | CiHASH | CiMINUS | CiNL | CiNUL | CiPERCT | CiPLUS | CiQC | CiQCL | CiQCM | CiQCX | CiQUEST | CiSP | CiSPX | CiTAB | CiUNDER)
+ /* 0‥7			octal digit */
+ #define C_OCTAL	CiOCTAL
+ /* !*+?@		pattern magical operator, except space */
