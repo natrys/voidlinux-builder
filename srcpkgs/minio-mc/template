@@ -1,8 +1,8 @@
 # Template file for 'minio-mc'
 pkgname=minio-mc
-version=2022.04.16
+version=2022.06.10
 revision=1
-_version="${version//./-}T21-11-21Z"
+_version="${version//./-}T22-29-12Z"
 wrksrc=mc-RELEASE.${_version}
 build_style=go
 go_import_path="github.com/minio/mc"
@@ -11,4 +11,4 @@ maintainer="Imran Khan <contact@imrankhan.live>"
 license="AGPL-3.0-or-later"
 homepage="https://github.com/minio/mc"
 distfiles="${homepage}/archive/RELEASE.${_version}.tar.gz"
-checksum=94c1d0b2450b8024f70142ac15a1cddfe007779de9f52264d7e572f4ab6de801
+checksum=b9af54ec8216a0fac49758e4291dfef73647cfc08b61453716bc712e4045eaa9
