@@ -1,27 +1,26 @@
 # Template file for 'polybar'
 pkgname=polybar
 version=3.5.7
-revision=4
+revision=5
 _commit=62da14e30d79219dc84d8d76abf14b619aff4ab4
 _xpp_commit=7a9960bbb912f0ed66929c978aaeb1c30acf4bfd
 wrksrc=${pkgname}-${_commit}
 build_style=cmake
-configure_args="
- -DENABLE_ALSA=$(vopt_if alsa ON OFF)
- -DENABLE_CURL=$(vopt_if curl ON OFF)
- -DENABLE_I3=$(vopt_if i3 ON OFF)
- -DENABLE_MPD=$(vopt_if mpd ON OFF)
- -DENABLE_NETWORK=$(vopt_if network ON OFF)
- -DENABLE_PULSEAUDIO=$(vopt_if pulseaudio ON OFF)
- -DWITH_XCOMPOSITE=ON"
-hostmakedepends="pkg-config xcb-proto python3 python3-Sphinx"
+configure_args="-DBUILD_CONFIG=OFF -DBUILD_DOC=OFF -DBUILD_DOC_HTML=OFF -DBUILD_DOC_MAN=OFF -DBUILD_TESTS=OFF
+ $(vopt_bool alsa ENABLE_ALSA)
+ $(vopt_bool curl ENABLE_CURL)
+ $(vopt_bool i3 ENABLE_I3)
+ $(vopt_bool mpd ENABLE_MPD)
+ $(vopt_bool network ENABLE_NETWORK)
+ $(vopt_bool pulseaudio ENABLE_PULSEAUDIO)"
+hostmakedepends="pkg-config xcb-proto python3"
 makedepends="cairo-devel xcb-util-image-devel xcb-util-wm-devel xcb-util-xrm-devel
  zlib-devel xcb-util-renderutil-devel xcb-util-cursor-devel libxcb-devel libuv-devel
  $(vopt_if alsa "alsa-lib-devel")
  $(vopt_if curl "libcurl-devel")
  $(vopt_if i3 "i3-devel jsoncpp-devel")
  $(vopt_if mpd "libmpdclient-devel")
- $(vopt_if network "wireless_tools-devel")
+ $(vopt_if network "libnl3-devel")
  $(vopt_if pulseaudio "pulseaudio-devel")"
 short_desc="Fast and easy-to-use status bar"
 maintainer="Imran Khan <imrankhan@teknik.io>"
@@ -29,27 +28,20 @@ license="MIT"
 homepage="https://github.com/polybar/polybar"
 distfiles="https://github.com/polybar/polybar/archive/${_commit}.tar.gz
  https://github.com/polybar/xpp/archive/${_xpp_commit}.tar.gz>xpp.tar.gz"
+changelog="https://raw.githubusercontent.com/polybar/polybar/master/CHANGELOG.md"
 checksum="d843dcbb8c355a6e08bca43e9c5b08d5e84ae94dcc76b93ae2b699d7c5b88f58
  03acbb18ade967e6ed4b5250d3c354d9023e40ff56b1a7ef288a4b8f77bf9844"
 skip_extraction="xpp.tar.gz"
+# tries to download and build unstable/unreleased googletest during configure
+make_check=no
 
 build_options="alsa curl i3 mpd network pulseaudio"
-build_options_default="curl network"
+build_options_default="alsa curl"
 
-desc_option_alsa="Enable support for ALSA"
 desc_option_curl="Enable support for cURL"
 desc_option_i3="Enable support for i3"
 desc_option_mpd="Enable support for MPD"
 desc_option_network="Enable support for network"
-desc_option_pulseaudio="Enable support for PulseAudio"
-
-CXXFLAGS="-Wno-error=deprecated-declarations"
-
-if [ "$build_option_network" ]; then
-	case "$XBPS_TARGET_MACHINE" in
-		*-musl) CXXFLAGS+=" -D_LINUX_IF_ETHER_H" ;;
-	esac
-fi
 
 if [ "$XBPS_TARGET_NO_ATOMIC8" ]; then
 	makedepends+=" libatomic-devel"
@@ -61,7 +53,7 @@ post_extract() {
 }
 
 post_install() {
-	#rm -rf ${DESTDIR}/usr/share/doc/polybar
-	#vdoc config
+	#rm -r ${DESTDIR}/usr/share/doc/polybar
+	vsconf doc/config.ini
 	vlicense LICENSE
 }
