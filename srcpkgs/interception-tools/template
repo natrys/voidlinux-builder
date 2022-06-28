@@ -1,6 +1,6 @@
 # Template file for 'interception-tools'
 pkgname=interception-tools
-version=0.6.7
+version=0.6.8
 revision=1
 wrksrc="tools-v${version}"
 build_style=cmake
@@ -12,4 +12,4 @@ maintainer="Imran Khan <imrankhan@teknik.io>"
 license="GPL-3.0-or-later"
 homepage="https://gitlab.com/interception/linux/tools"
 distfiles="https://gitlab.com/interception/linux/tools/-/archive/v${version}/tools-v${version}.tar.gz"
-checksum=58a388899c7bb765c5d35306b57894fb220dc8ab4d37475a33898bb2934bca81
+checksum=84ced1c10bef7f00660704685c651c4241096cc9848c31f5a04f166e1450949d
