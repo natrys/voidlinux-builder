@@ -1,0 +1,34 @@
+# Template file for 'slock-paranoid'
+pkgname=slock-paranoid
+version=0.1
+_commit=b84b0a5b6cc84723c9b20ea69178302368d9293e
+wrksrc=slock-${_commit}
+revision=1
+hostmakedepends="pkg-config"
+makedepends="libXrandr-devel"
+short_desc="Fork of Simple screen locker for X"
+maintainer="Imran Khan <imrankhan@teknik.io>"
+license="MIT"
+homepage="https://github.com/chjj/slock"
+distfiles="https://github.com/chjj/slock/archive/${_commit}.tar.gz"
+checksum=a1aeb940ff408373df35c55b675731c1ae256fc15e73d166049e7d712a323355
+
+pre_build() {
+  #sed -i 's/IMGUR_UPLOAD 0/IMGUR_UPLOAD 1/'
+  sed -i 's/TWILIO_SEND 1/IMGUR_UPLOAD 0/' slock.c
+  sed -i 's/POWEROFF 1/POWEROFF 0/' slock.c
+  sed -i 's/WEBCAM_SHOT 1/WEBCAM_SHOT 0/' slock.c
+  touch imgur.h twilio.h
+}
+
+do_build() {
+	sed -i 's/CPPFLAGS =/CPPFLAGS +=/g' config.mk
+	sed -i 's/CFLAGS =/CFLAGS +=/g' config.mk
+	sed -i 's/LDFLAGS =/LDFLAGS +=/g' config.mk
+	make CC=$CC INCS="-I." LIBS="-lX11 -lXext -lcrypt -lXrandr" ${makejobs}
+}
+
+do_install() {
+	make PREFIX=/usr DESTDIR=$DESTDIR install
+	vlicense LICENSE
+}
