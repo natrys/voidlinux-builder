@@ -1,8 +1,8 @@
 pkgname=emacs-nativecomp
 version=29.0.50
-_commit=ad011fd3accd97f5ab96dd7459ee8ef9f6ab4090
+_commit=22bee93d92567a1b01ebf7354089e6695e134611
 wrksrc=emacs-${_commit}
-revision=42
+revision=43
 build_style=gnu-configure
 configure_args="--with-file-notification=inotify --with-modules --with-native-compilation
  $(vopt_with jpeg) $(vopt_with tiff) $(vopt_with gif) $(vopt_with png)
@@ -26,7 +26,7 @@ maintainer="Imran Khan <imrankhan@teknik.io>"
 license="GPL-3.0-or-later"
 homepage="http://www.gnu.org/software/emacs/"
 distfiles="https://github.com/emacs-mirror/emacs/archive/${_commit}.tar.gz"
-checksum=ec507878c720930db566862efcd72a45f643e77948ea1b0e29c4e0aab13b1835
+checksum=31afc5a6f661d350be1f35e5a4545b29807bc6f7766757388709f7040005355b
 replaces="emacs>=0 emacs-master>=0 emacs-28>=0"
 nocross=yes
 nopie=yes
@@ -43,7 +43,7 @@ build_options_default="jpeg tiff gif png xpm svg xml gnutls sound m17n json harf
 do_configure() {
 	./autogen.sh
 	./configure --with-x-toolkit=no --without-toolkit-scroll-bars --without-ns \
-    		--with-xft --without-dbus --without-gconf --without-gsettings --with-zlib \
+    		--with-xft --without-gconf --without-gsettings --with-zlib \
 		${configure_args}
 }
 
