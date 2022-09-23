@@ -1,0 +1,20 @@
+# Template file for 'ctypes.sh'
+pkgname=ctypes.sh
+version=1.2
+_commit=6982e6cb226502cb89173fb272b3ef0438e593c4
+revision=1
+wrksrc=${pkgname}-${_commit}
+build_style=gnu-configure
+hostmakedepends="autoconf automake libtool pkg-config"
+makedepends="libffi-devel libltdl-devel elfutils-devel"
+depends="bash"
+short_desc="Foreign Function Interface for Bash"
+maintainer="Imran Khan <imrankhan@teknik.io>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/taviso/ctypes.sh"
+distfiles="https://github.com/taviso/ctypes.sh/archive/${_commit}.tar.gz"
+checksum=e4c2b4fff28a6ec8209f5ee981ea247486692db1f738fe9c7e02c3a93d87e5ce
+
+pre_configure() {
+	./autogen.sh
+}
