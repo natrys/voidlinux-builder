@@ -1,0 +1,18 @@
+# Template file for 'xapian-bindings'
+pkgname=xapian-bindings
+version=1.4.21
+revision=1
+build_style=gnu-configure
+configure_args="--with-python3"
+hostmakedepends="python3-Sphinx"
+makedepends="xapian-core-devel python3-devel zlib-devel libuuid-devel"
+short_desc="Python3 bindings for Xapian"
+maintainer="Imran Khan <imrankhan@teknik.io>"
+license="GPL-3.0-or-later"
+homepage="https://www.xapian.org/"
+distfiles="https://oligarchy.co.uk/xapian/${version}/xapian-bindings-${version}.tar.xz"
+checksum=e7bf1e4982b91f841289d19214021d88371ca2a6c7304df59049d7da78b83ced
+
+post_install() {
+	rm ${DESTDIR}/usr/lib64
+}
