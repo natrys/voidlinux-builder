@@ -1,7 +1,7 @@
 # Template file for 'xapian-bindings'
 pkgname=xapian-bindings
 version=1.4.21
-revision=1
+revision=2
 build_style=gnu-configure
 configure_args="--with-python3"
 hostmakedepends="python3-Sphinx"
