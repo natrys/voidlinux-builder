@@ -1,15 +1,15 @@
 pkgname=emacs-nativecomp
-version=29.0.50
-_commit=22bee93d92567a1b01ebf7354089e6695e134611
+version=30.0.50
+_commit=185bfc1af717046391e8b787e29f44f9768d00a7
 wrksrc=emacs-${_commit}
-revision=43
+revision=1
 build_style=gnu-configure
 configure_args="--with-file-notification=inotify --with-modules --with-native-compilation
  $(vopt_with jpeg) $(vopt_with tiff) $(vopt_with gif) $(vopt_with png)
  $(vopt_with xpm) $(vopt_with svg rsvg) $(vopt_with imagemagick) $(vopt_with json)
  $(vopt_with xml xml2) $(vopt_with gnutls) $(vopt_with sound) $(vopt_with m17n m17n-flt)
  $(vopt_with harfbuzz) $(vopt_with cairo) $(vopt_with lcms) $(vopt_with gmp)
- $(vopt_with sqlite) $(vopt_with xinput2)"
+ $(vopt_with sqlite) $(vopt_with xinput2) $(vopt_with webp) $(vopt_with tree_sitter)"
 hostmakedepends="pkg-config autoconf texinfo tar"
 makedepends="ncurses-devel libXaw-devel
  dbus-devel acl-devel zlib-devel libgccjit-devel
@@ -19,26 +19,26 @@ makedepends="ncurses-devel libXaw-devel
  $(vopt_if xml libxml2-devel) $(vopt_if gnutls gnutls-devel)
  $(vopt_if sound alsa-lib-devel) $(vopt_if m17n m17n-lib-devel)
  $(vopt_if harfbuzz harfbuzz-devel) $(vopt_if cairo cairo-devel)
- $(vopt_if lcms lcms2-devel) $(vopt_if gmp gmp-devel)
- $(vopt_if sqlite sqlite-devel) $(vopt_if xinput2 libXi-devel)"
-short_desc="GNU Emacs editor tracking master (nativecomp enabled)"
+ $(vopt_if lcms lcms2-devel) $(vopt_if gmp gmp-devel) $(vopt_if webp libwebp-devel)
+ $(vopt_if sqlite sqlite-devel) $(vopt_if xinput2 libXi-devel) $(vopt_if tree_sitter tree-sitter-devel)"
+short_desc="GNU Emacs editor tracking master branch (nativecomp enabled)"
 maintainer="Imran Khan <imrankhan@teknik.io>"
 license="GPL-3.0-or-later"
 homepage="http://www.gnu.org/software/emacs/"
 distfiles="https://github.com/emacs-mirror/emacs/archive/${_commit}.tar.gz"
-checksum=31afc5a6f661d350be1f35e5a4545b29807bc6f7766757388709f7040005355b
-replaces="emacs>=0 emacs-master>=0 emacs-28>=0"
+checksum=9b1c92aa21d4b97574f5c6d1f647f75dfe747170442b4723b44102973d88679c
+replaces="emacs>=0 emacs-master>=0 emacs-29>=0"
 nocross=yes
 nopie=yes
 provides="emacs-${version}"
-conflicts="emacs>=0 emacs-master>=0 emacs-28>=0"
+conflicts="emacs>=0 emacs-master>=0 emacs-29>=0"
 
 # Package build options
-build_options="jpeg tiff gif png xpm svg xml imagemagick gnutls sound m17n json harfbuzz cairo lcms sqlite xinput2"
+build_options="jpeg tiff gif png xpm svg xml imagemagick gnutls sound m17n json harfbuzz cairo lcms sqlite xinput2 webp tree_sitter"
 desc_option_xpm="Enable support for XPM images"
 desc_option_sound="Enable support for sound"
 desc_option_m17n="Enable support for m17n multilingual text processing"
-build_options_default="jpeg tiff gif png xpm svg xml gnutls sound m17n json harfbuzz cairo imagemagick lcms gmp sqlite xinput2"
+build_options_default="jpeg tiff gif png xpm svg xml gnutls sound m17n json harfbuzz cairo imagemagick lcms gmp sqlite xinput2 webp tree_sitter"
 
 do_configure() {
 	./autogen.sh
