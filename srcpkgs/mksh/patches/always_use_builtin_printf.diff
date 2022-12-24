@@ -1,0 +1,13 @@
+diff --git a/funcs.c b/funcs.c
+index ee2c9f6..644ebd9 100644
+--- a/funcs.c
++++ b/funcs.c
+@@ -150,7 +150,7 @@ const struct builtin mkshbuiltins[] = {
+ 	{"mknod", c_mknod},
+ #endif
+ #ifdef MKSH_PRINTF_BUILTIN
+-	{"~printf", c_printf},
++	{"*printf", c_printf},
+ #endif
+ #if HAVE_SELECT
+ 	{"sleep", c_sleep},
