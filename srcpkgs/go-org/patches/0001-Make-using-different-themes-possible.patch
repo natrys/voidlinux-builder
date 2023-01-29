@@ -1,0 +1,29 @@
+From 5e7e9188b4c0da655fe2961a0aa3d734be562f0c Mon Sep 17 00:00:00 2001
+From: Imran Khan <contact@imrankhan.live>
+Date: Mon, 30 Jan 2023 04:58:17 +0600
+Subject: [PATCH] Make using different themes possible
+
+---
+ main.go | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/main.go b/main.go
+index 62a22f3..cbe637c 100644
+--- a/main.go
++++ b/main.go
+@@ -134,7 +134,11 @@ func highlightCodeBlock(source, lang string, inline bool, params map[string]stri
+ 			options = append(options, html.HighlightLines(ranges))
+ 		}
+ 	}
+-	_ = html.New(options...).Format(&w, styles.Get("friendly"), it)
++	theme, exists := os.LookupEnv("CHROMA_THEME")
++	if !exists {
++		theme = "friendly"
++	}
++	_ = html.New(options...).Format(&w, styles.Get(theme), it)
+ 	if inline {
+ 		return `<div class="highlight-inline">` + "\n" + w.String() + "\n" + `</div>`
+ 	}
+-- 
+2.39.1
+

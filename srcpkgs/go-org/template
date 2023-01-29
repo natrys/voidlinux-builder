@@ -1,0 +1,13 @@
+# Template file for 'go-org'
+pkgname=go-org
+version=1.6.5
+_commit=1849701ba7d094c86a8ee9082a01bcae5dd783fe
+revision=1
+build_style=go
+go_import_path="github.com/niklasfasching/go-org"
+short_desc="Org-mode parser with HTML rendering"
+maintainer="Imran Khan <contact@imrankhan.live>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/niklasfasching/go-org"
+distfiles="https://github.com/niklasfasching/go-org/archive/${_commit}.tar.gz"
+checksum=b1cf0bc046f913abf9d49fd7f8a8428760bf0372d144202acd483afa6ff5f363
