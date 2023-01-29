@@ -1,0 +1,56 @@
+From 3b9c309dcf387f622eb97a4150ef6313c3d7a24e Mon Sep 17 00:00:00 2001
+From: Imran Khan <contact@imrankhan.live>
+Date: Mon, 30 Jan 2023 05:26:07 +0600
+Subject: [PATCH] update dependencies
+
+---
+ go.mod | 6 +++---
+ go.sum | 7 +++++++
+ 2 files changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/go.mod b/go.mod
+index 656b2d1..970256d 100644
+--- a/go.mod
++++ b/go.mod
+@@ -3,9 +3,9 @@ module github.com/niklasfasching/go-org
+ go 1.18
+ 
+ require (
+-	github.com/alecthomas/chroma/v2 v2.2.0
++	github.com/alecthomas/chroma/v2 v2.4.0
+ 	github.com/pmezard/go-difflib v1.0.0
+-	golang.org/x/net v0.0.0-20201224014010-6772e930b67b
++	golang.org/x/net v0.5.0
+ )
+ 
+-require github.com/dlclark/regexp2 v1.4.0 // indirect
++require github.com/dlclark/regexp2 v1.8.0 // indirect
+diff --git a/go.sum b/go.sum
+index cb17237..0d08f90 100644
+--- a/go.sum
++++ b/go.sum
+@@ -1,14 +1,21 @@
+ github.com/alecthomas/chroma/v2 v2.2.0 h1:Aten8jfQwUqEdadVFFjNyjx7HTexhKP0XuqBG67mRDY=
+ github.com/alecthomas/chroma/v2 v2.2.0/go.mod h1:vf4zrexSH54oEjJ7EdB65tGNHmH3pGZmVkgTP5RHvAs=
++github.com/alecthomas/chroma/v2 v2.4.0 h1:Loe2ZjT5x3q1bcWwemqyqEi8p11/IV/ncFCeLYDpWC4=
++github.com/alecthomas/chroma/v2 v2.4.0/go.mod h1:6kHzqF5O6FUSJzBXW7fXELjb+e+7OXW4UpoPqMO7IBQ=
+ github.com/alecthomas/repr v0.0.0-20220113201626-b1b626ac65ae h1:zzGwJfFlFGD94CyyYwCJeSuD32Gj9GTaSi5y9hoVzdY=
++github.com/alecthomas/repr v0.1.0 h1:ENn2e1+J3k09gyj2shc0dHr/yjaWSHRlrJ4DPMevDqE=
+ github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
+ github.com/dlclark/regexp2 v1.4.0 h1:F1rxgk7p4uKjwIQxBs9oAXe5CqrXlCduYEJvrF4u93E=
+ github.com/dlclark/regexp2 v1.4.0/go.mod h1:2pZnwuY/m+8K6iRw6wQdMtk+rH5tNGR1i55kozfMjCc=
++github.com/dlclark/regexp2 v1.8.0 h1:rJD5HeGIT/2b5CDk63FVCwZA3qgYElfg+oQK7uH5pfE=
++github.com/dlclark/regexp2 v1.8.0/go.mod h1:DHkYz0B9wPfa6wondMfaivmHpzrQ3v9q8cnmRbL6yW8=
+ github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
+ github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
+ github.com/stretchr/testify v1.7.0 h1:nwc3DEeHmmLAfoZucVR881uASk0Mfjw8xYJ99tb5CcY=
+ golang.org/x/net v0.0.0-20201224014010-6772e930b67b h1:iFwSg7t5GZmB/Q5TjiEAsdoLDrdJRC1RiF2WhuV29Qw=
+ golang.org/x/net v0.0.0-20201224014010-6772e930b67b/go.mod h1:m0MpNAwzfU5UDzcl9v0D8zg8gWTRqZa9RBIspLL5mdg=
++golang.org/x/net v0.5.0 h1:GyT4nK/YDHSqa1c4753ouYCDajOYKTja9Xb/OHtgvSw=
++golang.org/x/net v0.5.0/go.mod h1:DivGGAXEgPSlEBzxGzZI+ZLohi+xUj054jfeKui00ws=
+ golang.org/x/sys v0.0.0-20201119102817-f84b799fce68/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
+ golang.org/x/term v0.0.0-20201126162022-7de9c90e9dd1/go.mod h1:bj7SfCRtBDWHUb9snDiAeCFNEtKQo2Wmx5Cou7ajbmo=
+ golang.org/x/text v0.3.3/go.mod h1:5Zoc/QRtKVWzQhOtBMvqHzDpF6irO9z98xDceosuGiQ=
+-- 
+2.39.1
+
