@@ -1,9 +1,9 @@
 # Template file for 'plowshare'
 pkgname=plowshare
 version=2.1.7
-revision=1
+revision=2
 build_style=gnu-makefile
-depends="curl recode mozjs78"
+depends="curl recode mozjs102"
 short_desc="Tool and engine for managing sharing websites"
 maintainer="Imran Khan <imrankhan@teknik.io>"
 license="GPL-3.0-or-later"
