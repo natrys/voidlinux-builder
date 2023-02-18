@@ -1,8 +1,8 @@
 # Template file for 'pgmodeler'
 pkgname=pgmodeler
-version=1.0.0
-_version=beta1
-revision=4
+version=1.0.1
+#_version=beta1
+revision=1
 #wrksrc=${pkgname}-${version}-${_version}
 wrksrc=${pkgname}-${version}
 build_style=qmake
@@ -16,7 +16,7 @@ license="GPL-3.0-or-later"
 homepage="https://www.pgmodeler.io/"
 #distfiles="https://github.com/pgmodeler/pgmodeler/archive/v${version}-${_version}.tar.gz"
 distfiles="https://github.com/pgmodeler/pgmodeler/archive/v${version}.tar.gz"
-checksum=b1dda65da06bb8d48cc0e86181c8f6855c5f8d794242b80f1bc11e0dbe475d0c
+checksum=02e628cb41cae99b88f5bf54587e19787dc4642bd8461d10444977191fab3f2e
 
 if [ "$CROSS_BUILD" ]; then
 	hostmakedepends+=" qt5-host-tools qt5-devel"
