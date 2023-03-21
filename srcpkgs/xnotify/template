@@ -1,29 +1,22 @@
 # Template file for 'xnotify'
 pkgname=xnotify
-version=0.8.1
-revision=3
-_commit=d11579c78ada96429bb826c3d0ec177406892485
+version=0.9.3
+revision=1
 wrksrc=${pkgname}-${_commit}
 build_style=gnu-makefile
+make_build_args="LOCALINC=${XBPS_CROSS_BASE}/usr/include
+ LOCALLIB=${XBPS_CROSS_BASE}/usr/lib
+ FREETYPEINC=${XBPS_CROSS_BASE}/usr/include/freetype2
+ X11INC=${XBPS_CROSS_BASE}/usr/include/X11
+ LDFLAGS+=\$(LIBS) CFLAGS+=\$(INCS)"
 make_use_env=yes
 makedepends="freetype-devel imlib2-devel libXft-devel libXinerama-devel"
 short_desc="Popup a notification on the screen"
 maintainer="Imran Khan <imrankhan@teknik.io>"
 license="MIT"
 homepage="https://github.com/phillbush/xnotify"
-distfiles="https://github.com/phillbush/xnotify/archive/${_commit}.tar.gz"
-checksum=425737fef3f8083ea240f11c27bdeb588d62244f98c4b74477cd2d9a189d8543
-
-pre_build() {
-	vsed -i config.mk -e 's|/local||' \
-			-e '\|^X11INC|s|/.*|/usr/include/X11|' \
-			-e "\|^CFLAGS|s|\$| ${CFLAGS}|"
-
-	if [ "$CROSS_BUILD" ]; then
-		vsed -i config.mk -e "s|^CC = .*|CC = ${CC}|" \
-			-e 's/-I/-I${XBPS_CROSS_BASE}/g'
-	fi
-}
+distfiles="https://github.com/phillbush/xnotify/archive/v${version}.tar.gz"
+checksum=9fa7505ad16c8d5e2305a56d0d88ca3a7e324816b4df7845b920db088482eb24
 
 post_install() {
 	vlicense LICENSE
