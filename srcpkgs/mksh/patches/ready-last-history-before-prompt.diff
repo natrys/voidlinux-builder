@@ -1,0 +1,43 @@
+diff --git a/histrap.c b/histrap.c
+index 7f46201..1af3dc2 100644
+--- a/histrap.c
++++ b/histrap.c
+@@ -392,24 +392,11 @@ hist_get(const char *str, bool approx, bool allow_cur)
+ 	int n;
+ 
+ 	if (getn(str, &n)) {
+-		hp = histptr + (n < 0 ? n : (n - hist_source->line));
+-		if ((size_t)hp < (size_t)history) {
+-			if (approx)
+-				hp = hist_get_oldest();
+-			else {
+-				bi_errorf(Tf_sD_s, str, Tnot_in_history);
+-				hp = NULL;
+-			}
+-		} else if ((size_t)hp > (size_t)histptr) {
+-			if (approx)
+-				hp = hist_get_newest(allow_cur);
+-			else {
+-				bi_errorf(Tf_sD_s, str, Tnot_in_history);
+-				hp = NULL;
+-			}
+-		} else if (!allow_cur && hp == histptr) {
+-			bi_errorf(Tf_sD_s, str, "invalid range");
+-			hp = NULL;
++                if (approx) {
++                        hp = hist_get_newest(allow_cur);
++                } else {
++		        bi_errorf(Tf_sD_s, str, Tnot_in_history);
++		        hp = NULL;
+ 		}
+ 	} else {
+ 		bool anchored = *str == '?' ? (++str, false) : true;
+@@ -429,7 +416,7 @@ char **
+ hist_get_newest(bool allow_cur)
+ {
+ 	if (histptr < history || (!allow_cur && histptr == history)) {
+-		bi_errorf("no history (yet)");
++		// bi_errorf("no history (yet)");
+ 		return (NULL);
+ 	}
+ 	return (allow_cur ? histptr : histptr - 1);

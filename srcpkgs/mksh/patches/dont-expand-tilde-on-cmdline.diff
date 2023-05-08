@@ -1,0 +1,40 @@
+diff --git a/edit.c b/edit.c
+index a98f5dd..a2ccbf2 100644
+--- a/edit.c
++++ b/edit.c
+@@ -120,6 +120,18 @@ static int x_locate_word(const char *, int, int, int *, bool *);
+ 
+ static int x_e_getmbc(char *);
+ 
++static int str_starts_with(const char *, const char *);
++
++
++static int
++str_starts_with(const char *str1, const char *str2)
++{
++        int i;
++        for (i = 0; str2[i] && str1[i] == str2[i]; i++);
++        return str2[i] ? 0 : i;
++}
++
++
+ /* +++ generic editing functions +++ */
+ 
+ /*
+@@ -2835,7 +2847,15 @@ do_complete(
+ 		xcp = xbuf + start;
+ 		xep -= olen;
+ 		memmove(xcp, xcp + olen, xep - xcp + 1);
+-		x_escape(words[0], nlen, x_do_ins);
++
++                int match_idx;
++                if (match_idx = str_starts_with(words[0], str_val(global("HOME")))) {
++                        int offset = match_idx - 1;
++                        words[0][offset] = '~';
++                        x_escape(words[0] + offset, nlen - offset, x_do_ins);
++                } else {
++		        x_escape(words[0], nlen, x_do_ins);
++                }
+ 	}
+ 	x_adjust();
+ 	/*
