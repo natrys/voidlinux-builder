@@ -1,0 +1,211 @@
+From 90e72e6e370fda3de1fd79ce714b6441b2a44e84 Mon Sep 17 00:00:00 2001
+From: Imran Khan <imran@khan.ovh>
+Date: Thu, 11 May 2023 03:42:33 +0600
+Subject: [PATCH 1/1] Reimplement cmdline editing functions in C.
+
+I had two of these things implemented in mkshrc using bind, but now I
+can just do everything in C level. They don't really need to be
+exposed as emacs mode functions as I am binding to my preferred key
+directly, but for reference these are the functions:
+
+- delete-backward-till-slash (C-M-h)
+- delete-fullword-backward (C-w)
+- backward-fullword (M-u)
+
+For C-w, had to disable existing bindings. Same as C-M-h and M-u but
+they were simpler. The x_del_back_till_slash implementation was fully
+mine, otherwise basically re-used template from x_bword (and then
+create anologs of x_del_bword and x_mv_bword).
+---
+ edit.c    | 84 ++++++++++++++++++++++++++++++++++++++++++++++++++-----
+ emacsfn.h |  3 ++
+ 2 files changed, 80 insertions(+), 7 deletions(-)
+
+diff --git a/edit.c b/edit.c
+index a98f5dd..fb52fd0 100644
+--- a/edit.c
++++ b/edit.c
+@@ -983,6 +983,7 @@ static int x_col;		/* current column on line */
+ static int x_ins(const char *);
+ static void x_delete(size_t, bool);
+ static size_t x_bword(void);
++static size_t x_bfullword(void);
+ static size_t x_fword(bool);
+ static void x_goto(char *);
+ static char *x_bs0(char *, char *) MKSH_A_PURE;
+@@ -1035,11 +1036,13 @@ static const struct x_ftab x_ftab[] = {
+ static struct x_defbindings const x_defbindings[] = {
+ 	{ XFUNC_del_back,		0,  CTRL_QM	},
+ 	{ XFUNC_del_bword,		1,  CTRL_QM	},
++	{ XFUNC_del_bfullword,		0,  CTRL_W	},
+ 	{ XFUNC_eot_del,		0,  CTRL_D	},
+ 	{ XFUNC_del_back,		0,  CTRL_H	},
+-	{ XFUNC_del_bword,		1,  CTRL_H	},
++	{ XFUNC_del_back_till_slash,		1,  CTRL_H	},
+ 	{ XFUNC_del_bword,		1,	'h'	},
+ 	{ XFUNC_mv_bword,		1,	'b'	},
++	{ XFUNC_mv_bfullword,		1,	'u'	},
+ 	{ XFUNC_mv_fword,		1,	'f'	},
+ 	{ XFUNC_del_fword,		1,	'd'	},
+ 	{ XFUNC_mv_back,		0,  CTRL_B	},
+@@ -1079,7 +1082,7 @@ static struct x_defbindings const x_defbindings[] = {
+ 	{ XFUNC_list_comm,		2,	'?'	},
+ 	{ XFUNC_list_file,		2,  CTRL_Y	},
+ 	{ XFUNC_set_mark,		1,	' '	},
+-	{ XFUNC_kill_region,		0,  CTRL_W	},
++	// { XFUNC_kill_region,		0,  CTRL_W	},
+ 	{ XFUNC_xchg_point_mark,	2,  CTRL_X	},
+ 	{ XFUNC_literal,		0,  CTRL_V	},
+ 	{ XFUNC_version,		1,  CTRL_V	},
+@@ -1097,7 +1100,7 @@ static struct x_defbindings const x_defbindings[] = {
+ 	{ XFUNC_set_arg,		1,	'9'	},
+ #ifndef MKSH_SMALL
+ 	{ XFUNC_fold_upper,		1,	'U'	},
+-	{ XFUNC_fold_upper,		1,	'u'	},
++	// { XFUNC_fold_upper,		1,	'u'	},
+ 	{ XFUNC_fold_lower,		1,	'L'	},
+ 	{ XFUNC_fold_lower,		1,	'l'	},
+ 	{ XFUNC_fold_capitalise,	1,	'C'	},
+@@ -1430,6 +1433,35 @@ x_del_back(int c MKSH_A_UNUSED)
+ 	return (KSTD);
+ }
+ 
++static int
++x_del_back_till_slash(int c MKSH_A_UNUSED)
++{
++	if (xcp == xbuf) {
++		x_e_putc2(KSH_BEL);
++		return (KSTD);
++	}
++
++	ssize_t i = 1;
++	int found = 0;
++
++	if (*(xcp - i) == '/') i++;
++
++	while ((xcp - i) >= xbuf) {
++		if (*(xcp - i) == '/') {
++			found = 1;
++			break;
++		}
++		i++;
++	}
++
++	if (found) {
++		x_goto(xcp - i + 1);
++		x_delete(i - 1, true);
++	}
++
++	return (KSTD);
++}
++
+ static int
+ x_del_char(int c MKSH_A_UNUSED)
+ {
+@@ -1528,6 +1560,13 @@ x_del_bword(int c MKSH_A_UNUSED)
+ 	return (KSTD);
+ }
+ 
++static int
++x_del_bfullword(int c MKSH_A_UNUSED)
++{
++	x_delete(x_bfullword(), true);
++	return (KSTD);
++}
++
+ static int
+ x_mv_bword(int c MKSH_A_UNUSED)
+ {
+@@ -1535,6 +1574,13 @@ x_mv_bword(int c MKSH_A_UNUSED)
+ 	return (KSTD);
+ }
+ 
++static int
++x_mv_bfullword(int c MKSH_A_UNUSED)
++{
++	x_bfullword();
++	return (KSTD);
++}
++
+ static int
+ x_mv_fword(int c MKSH_A_UNUSED)
+ {
+@@ -1573,6 +1619,30 @@ x_bword(void)
+ 	return (x_nb2nc(nb));
+ }
+ 
++static size_t
++x_bfullword(void)
++{
++	size_t nb = 0;
++	char *cp = xcp;
++
++	if (cp == xbuf) {
++		x_e_putc2(KSH_BEL);
++		return (0);
++	}
++	while (x_arg--) {
++		while (cp != xbuf && ctype(cp[-1], C_IFS)) {
++			cp--;
++			nb++;
++		}
++		while (cp != xbuf && !ctype(cp[-1], C_IFS)) {
++			cp--;
++			nb++;
++		}
++	}
++	x_goto(cp);
++	return (x_nb2nc(nb));
++}
++
+ static size_t
+ x_fword(bool move)
+ {
+@@ -3383,8 +3453,8 @@ x_mode(bool onoff)
+ 			edchars.quit = CTRL_BK;
+ 		if (!edchars.eof)
+ 			edchars.eof = CTRL_D;
+-		if (!edchars.werase)
+-			edchars.werase = CTRL_W;
++		// if (!edchars.werase)
++			// edchars.werase = CTRL_W;
+ 
+ 		if (isedchar(edchars.erase)) {
+ 			bind_if_not_bound(0, edchars.erase, XFUNC_del_back);
+@@ -3392,8 +3462,8 @@ x_mode(bool onoff)
+ 		}
+ 		if (isedchar(edchars.kill))
+ 			bind_if_not_bound(0, edchars.kill, XFUNC_del_line);
+-		if (isedchar(edchars.werase))
+-			bind_if_not_bound(0, edchars.werase, XFUNC_del_bword);
++		// if (isedchar(edchars.werase))
++			// bind_if_not_bound(0, edchars.werase, XFUNC_del_bword);
+ 		if (isedchar(edchars.intr))
+ 			bind_if_not_bound(0, edchars.intr, XFUNC_abort);
+ 		if (isedchar(edchars.quit))
+diff --git a/emacsfn.h b/emacsfn.h
+index 6162987..06235ee 100644
+--- a/emacsfn.h
++++ b/emacsfn.h
+@@ -40,8 +40,10 @@ FN(comp_comm, "complete-command", 0)
+ FN(comp_file, "complete-file", 0)
+ FN(comp_list, "complete-list", 0)
+ FN(complete, "complete", 0)
++FN(del_back_till_slash, "delete-backward-till-slash", 0)
+ FN(del_back, "delete-char-backward", XF_ARG)
+ FN(del_bword, "delete-word-backward", XF_ARG)
++FN(del_bfullword, "delete-fullword-backward", XF_ARG)
+ FN(del_char, "delete-char-forward", XF_ARG)
+ FN(del_fword, "delete-word-forward", XF_ARG)
+ FN(del_line, "kill-line", 0)
+@@ -80,6 +82,7 @@ FN(meta_yank, "yank-pop", 0)
+ FN(mv_back, "backward-char", XF_ARG)
+ FN(mv_beg, "beginning-of-line", 0)
+ FN(mv_bword, "backward-word", XF_ARG)
++FN(mv_bfullword, "backward-fullword", XF_ARG)
+ FN(mv_end, "end-of-line", 0)
+ FN(mv_forw, "forward-char", XF_ARG)
+ FN(mv_fword, "forward-word", XF_ARG)
+-- 
+2.40.1
+

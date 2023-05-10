@@ -28,7 +28,7 @@ index a98f5dd..a2ccbf2 100644
 -		x_escape(words[0], nlen, x_do_ins);
 +
 +                int match_idx;
-+                if (match_idx = str_starts_with(words[0], str_val(global("HOME")))) {
++                if ((match_idx = str_starts_with(words[0], str_val(global("HOME"))))) {
 +                        int offset = match_idx - 1;
 +                        words[0][offset] = '~';
 +                        x_escape(words[0] + offset, nlen - offset, x_do_ins);
