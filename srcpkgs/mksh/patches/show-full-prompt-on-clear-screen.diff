@@ -1,0 +1,15 @@
+diff --git a/edit.c b/edit.c
+index a98f5dd..a536b0d 100644
+--- a/edit.c
++++ b/edit.c
+@@ -2079,7 +2079,10 @@ static int
+ x_cls(int c MKSH_A_UNUSED)
+ {
+ 	shf_puts(MKSH_CLS_STRING, shl_out);
++	int temp = prompt_trunc;
++	prompt_trunc = -2;
+ 	x_redraw(0);
++	prompt_trunc = temp;
+ 	return (KSTD);
+ }
+ 
