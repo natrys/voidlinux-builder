@@ -1,8 +1,8 @@
 pkgname=emacs-nativecomp
 version=30.0.50
-_commit=185bfc1af717046391e8b787e29f44f9768d00a7
+_commit=3e132b972e30c5b0cb75ed29d8ca5a845434d6fe
 wrksrc=emacs-${_commit}
-revision=1
+revision=2
 build_style=gnu-configure
 configure_args="--with-file-notification=inotify --with-modules --with-native-compilation
  $(vopt_with jpeg) $(vopt_with tiff) $(vopt_with gif) $(vopt_with png)
@@ -26,7 +26,7 @@ maintainer="Imran Khan <imrankhan@teknik.io>"
 license="GPL-3.0-or-later"
 homepage="http://www.gnu.org/software/emacs/"
 distfiles="https://github.com/emacs-mirror/emacs/archive/${_commit}.tar.gz"
-checksum=9b1c92aa21d4b97574f5c6d1f647f75dfe747170442b4723b44102973d88679c
+checksum=1c5d5ecc384bbbc64accc365743c197a51a448413031a75b7aecd6da2e35714e
 replaces="emacs>=0 emacs-master>=0 emacs-29>=0"
 nocross=yes
 nopie=yes
