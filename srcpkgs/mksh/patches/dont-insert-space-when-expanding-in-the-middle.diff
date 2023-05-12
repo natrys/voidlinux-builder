@@ -1,0 +1,13 @@
+diff --git a/edit.c b/edit.c
+index fb52fd0..eab6475 100644
+--- a/edit.c
++++ b/edit.c
+@@ -2913,7 +2913,7 @@ do_complete(
+ 	 * and not a parameter or homedir substitution
+ 	 */
+ 	if (nwords == 1 && !mksh_cdirsep(words[0][nlen - 1]) &&
+-	    !(flags & XCF_IS_NOSPACE)) {
++	    !(flags & XCF_IS_NOSPACE) && (xcp == xep)) {
+ 		x_ins(T1space);
+ 	}
+ 
