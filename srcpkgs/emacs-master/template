@@ -22,7 +22,7 @@ makedepends="ncurses-devel libXaw-devel
  $(vopt_if lcms lcms2-devel) $(vopt_if gmp gmp-devel)
  $(vopt_if sqlite sqlite-devel) $(vopt_if xinput2 libXi-devel)"
 short_desc="GNU Emacs editor (28.0.60/pre-release)"
-maintainer="Imran Khan <imrankhan@teknik.io>"
+maintainer="Imran Khan <imran@khan.ovh>"
 license="GPL-3.0-or-later"
 homepage="http://www.gnu.org/software/emacs/"
 distfiles="https://github.com/emacs-mirror/emacs/archive/${_commit}.tar.gz"

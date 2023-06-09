@@ -12,7 +12,7 @@ make_build_args="LOCALINC=${XBPS_CROSS_BASE}/usr/include
 make_use_env=yes
 makedepends="freetype-devel imlib2-devel libXft-devel libXinerama-devel"
 short_desc="Popup a notification on the screen"
-maintainer="Imran Khan <imrankhan@teknik.io>"
+maintainer="Imran Khan <imran@khan.ovh>"
 license="MIT"
 homepage="https://github.com/phillbush/xnotify"
 distfiles="https://github.com/phillbush/xnotify/archive/v${version}.tar.gz"

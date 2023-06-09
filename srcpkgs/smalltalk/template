@@ -7,7 +7,7 @@ configure_args="--prefix=/usr --libexecdir=/usr/lib/smalltalk --with-imagedir=/v
 hostmakedepends="pkg-config zip"
 makedepends="libsigsegv-devel libffi-devel libltdl-devel gmp-devel readline-devel gnutls-devel sqlite-devel"
 short_desc="GNU Smalltalk interpreter and libraries"
-maintainer="Imran Khan <imrankhan@teknik.io>"
+maintainer="Imran Khan <imran@khan.ovh>"
 license="GPL"
 homepage="http://smalltalk.gnu.org/"
 distfiles="ftp://alpha.gnu.org/gnu/smalltalk/smalltalk-${version}.tar.xz"

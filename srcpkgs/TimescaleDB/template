@@ -7,7 +7,7 @@ build_style=cmake
 configure_args="-DREGRESS_CHECKS=OFF -DTAP_CHECKS=OFF -DCMAKE_BUILD_TYPE=Release"
 makedepends="postgresql-libs-devel openssl-devel"
 short_desc="Time-series SQL Database"
-maintainer="Imran Khan <imrankhan@teknik.io>"
+maintainer="Imran Khan <imran@khan.ovh>"
 license="Apache-2.0, custom:Timescale"
 homepage="https://timescale.com"
 distfiles="https://github.com/timescale/timescaledb/archive/refs/tags/${version}.tar.gz"

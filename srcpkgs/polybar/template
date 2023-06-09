@@ -23,7 +23,7 @@ makedepends="cairo-devel xcb-util-image-devel xcb-util-wm-devel xcb-util-xrm-dev
  $(vopt_if network "libnl3-devel")
  $(vopt_if pulseaudio "pulseaudio-devel")"
 short_desc="Fast and easy-to-use status bar"
-maintainer="Imran Khan <imrankhan@teknik.io>"
+maintainer="Imran Khan <imran@khan.ovh>"
 license="MIT"
 homepage="https://github.com/polybar/polybar"
 distfiles="https://github.com/polybar/polybar/archive/${_commit}.tar.gz

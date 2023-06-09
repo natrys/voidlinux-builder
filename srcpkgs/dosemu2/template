@@ -10,7 +10,7 @@ hostmakedepends="autoconf automake bdftopcf flex pkg-config"
 makedepends="SDL2-devel gpm-devel libslirp-devel readline-devel json-c-devel
   libao-devel fluidsynth-devel alsa-lib-devel slang-devel fdpp-devel libbsd-devel"
 short_desc="Run DOS programs under linux"
-maintainer="Imran Khan <imrankhan@teknik.io>"
+maintainer="Imran Khan <imran@khan.ovh>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/dosemu2/dosemu2"
 distfiles="https://github.com/dosemu2/dosemu2/archive/${_commit}.tar.gz"

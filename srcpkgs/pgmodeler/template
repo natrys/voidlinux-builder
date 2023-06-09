@@ -11,7 +11,7 @@ hostmakedepends="pkg-config"
 makedepends="qt6-base-devel qt6-svg-devel qt6-tools-devel
  postgresql-libs-devel libxml2-devel"
 short_desc="Data Modeling Tool Designed for PostgreSQL"
-maintainer="Imran Khan <imrankhan@teknik.io>"
+maintainer="Imran Khan <imran@khan.ovh>"
 license="GPL-3.0-or-later"
 homepage="https://www.pgmodeler.io/"
 #distfiles="https://github.com/pgmodeler/pgmodeler/archive/v${version}-${_version}.tar.gz"

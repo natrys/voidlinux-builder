@@ -8,7 +8,7 @@ hostmakedepends="pkg-config"
 makedepends="eudev-libudev-devel libevdev-devel yaml-cpp-devel
   boost-devel"
 short_desc="Utilities for operating on input events of evdev devices"
-maintainer="Imran Khan <imrankhan@teknik.io>"
+maintainer="Imran Khan <imran@khan.ovh>"
 license="GPL-3.0-or-later"
 homepage="https://gitlab.com/interception/linux/tools"
 distfiles="https://gitlab.com/interception/linux/tools/-/archive/v${version}/tools-v${version}.tar.gz"

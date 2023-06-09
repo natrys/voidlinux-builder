@@ -9,7 +9,7 @@ make_build_args="BUNDLED=0"
 make_use_env=yes
 makedepends="LuaJIT-devel"
 short_desc="Fast cross-platform website generator"
-maintainer="Imran Khan <imrankhan@teknik.io>"
+maintainer="Imran Khan <imran@khan.ovh>"
 license="MIT"
 homepage="https://nift.dev/"
 distfiles="https://github.com/nifty-site-manager/nsm/archive/v${version}.tar.gz"
