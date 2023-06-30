@@ -20,6 +20,8 @@ release() {
   tarball=$(pkgname=$pkgname version=$new_version sh -c 'eval echo $distfile')
   wget -O /tmp/$pkgname.tar.gz $tarball
   
+  new_revision=1
+  sed -i -E "\|^revision|s|=.*|=$new_revision|" $template
   sed -i -E "\|^version|s|=.*|=$new_version|" $template
 }
 

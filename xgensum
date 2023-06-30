@@ -1,5 +1,5 @@
-#!/bin/sh
-template=$PWD/srcpkgs/$1/template
+#!/bin/mksh
+template="${PWD}/srcpkgs/$1/template"
 . $template
 
 mkdir -p /tmp/voidbuilder/
