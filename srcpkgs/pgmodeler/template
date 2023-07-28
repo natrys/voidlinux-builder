@@ -2,11 +2,11 @@
 pkgname=pgmodeler
 version=1.0.5
 #_version=beta1
-revision=1
+revision=2
 #wrksrc=${pkgname}-${version}-${_version}
 wrksrc=${pkgname}-${version}
 build_style=qmake
-configure_args="CONFIG+=release pgmodeler.pro"
+configure_args="CONFIG+=release NO_UPDATE_CHECK=true pgmodeler.pro"
 hostmakedepends="pkg-config"
 makedepends="qt6-base-devel qt6-svg-devel qt6-tools-devel
  postgresql-libs-devel libxml2-devel"
