@@ -1,6 +1,6 @@
 # Template file for 'TimescaleDB'
 pkgname=TimescaleDB
-version=2.12.2
+version=2.13.0
 revision=1
 wrksrc="timescaledb-${version}"
 build_style=cmake
@@ -11,7 +11,7 @@ maintainer="Imran Khan <imran@khan.ovh>"
 license="Apache-2.0, custom:Timescale"
 homepage="https://timescale.com"
 distfiles="https://github.com/timescale/timescaledb/archive/refs/tags/${version}.tar.gz"
-checksum=d24cd29aad411d3e41d543d1a30827c48f8e01a48563650db5fac145ad7a01eb
+checksum=584a351c7775f0e067eaa0e7277ea88cab9077cc4c455cbbf09a5d9723dce95d
 
 post_install() {
 	vlicense LICENSE-APACHE
