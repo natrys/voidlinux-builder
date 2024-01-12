@@ -25,8 +25,9 @@ grep -o 'TAG.*' void/.travis.yml | sed -e 's/^TAG/DOCKER_TAG/' >> /tmp/docker_ma
 . /tmp/docker_masterdir
 rm /tmp/docker_masterdir
 
-DOCKER_IMAGE=${DOCKER_BASE}-${BOOTSTRAP}:${DOCKER_TAG}
-DOCKER_IMAGE="ghcr.io/natrys/voidlinux:masterdir-${BOOTSTRAP}"
+#DOCKER_IMAGE=${DOCKER_BASE}-${BOOTSTRAP}:${DOCKER_TAG}
+#DOCKER_IMAGE="ghcr.io/natrys/voidlinux:masterdir-${BOOTSTRAP}"
+DOCKER_IMAGE="ghcr.io/void-linux/void-buildroot-glibc:latest"
 
 /bin/echo -e "\x1b[32mPulling docker image $DOCKER_IMAGE...\x1b[0m"
 docker pull $DOCKER_IMAGE
