@@ -1,7 +1,7 @@
 # Template file for 'openresty'
 pkgname=openresty
 version=1.25.3.1
-revision=1
+revision=2
 build_style=configure
 hostmakedepends="perl"
 makedepends="openssl-devel pcre-devel $(vopt_if geoip geoip-devel)"
