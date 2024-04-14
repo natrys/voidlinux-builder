@@ -1,6 +1,6 @@
 # Template file for 'pgmodeler'
 pkgname=pgmodeler
-version=1.1.1
+version=1.1.2
 revision=1
 build_style=qmake
 configure_args="CONFIG+=release NO_UPDATE_CHECK=true pgmodeler.pro"
@@ -12,7 +12,7 @@ maintainer="Imran Khan <imran@khan.ovh>"
 license="GPL-3.0-or-later"
 homepage="https://www.pgmodeler.io/"
 distfiles="https://github.com/pgmodeler/pgmodeler/archive/v${version}.tar.gz"
-checksum=9891e3a86a927a31c74c59ca45fee4a4cac59941b5ffbcccb97edad3e4a5a000
+checksum=de6a345bd5f3f2360fe93e6242ed320e00724cc3be13d1ac34c77cc30c3af7af
 
 if [ "$CROSS_BUILD" ]; then
 	hostmakedepends+=" qt6-host-tools qt6-base-devel"
