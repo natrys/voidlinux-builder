@@ -1,0 +1,17 @@
+# Template file for 'guile-gnutls'
+pkgname=guile-gnutls
+version=4.0.0
+revision=1
+build_style=gnu-configure
+hostmakedepends="pkg-config automake texinfo libtool"
+makedepends="guile-devel gnutls-devel"
+short_desc="Guile bindings for the GnuTLS library"
+maintainer="Imran Khan <imran@khan.ovh>"
+license="GPL-3.0-or-later"
+homepage="https://gitlab.com/gnutls/guile/"
+distfiles="https://gitlab.com/gnutls/guile/-/archive/v${version}/guile-v${version}.tar.gz"
+checksum=2ea2fc6361c278897abd2fcc9d7bad240c5eca5c72ddd6c19b29f99b759da1df
+
+pre_configure() {
+	autoreconf -vif
+}
