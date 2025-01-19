@@ -1,9 +1,9 @@
 # Template file for 'scryer-prolog'
 pkgname=scryer-prolog
 version=0.9.4
-_commit=df41eb18709fb78b2ab8df52f79bbd3aaba9dae2
+_commit=00e6e323f861cb574dce6350390136ae99df508a
 wrksrc=${pkgname}-${_commit}
-revision=1
+revision=2
 build_style=cargo
 hostmakedepends="pkg-config"
 makedepends="openssl-devel"
@@ -12,7 +12,7 @@ maintainer="Hans-J. Schmid <knock@myopendoor.de>"
 license="BSD-3-Clause"
 homepage="https://github.com/mthom/scryer-prolog"
 distfiles="https://github.com/mthom/scryer-prolog/archive/${_commit}.tar.gz"
-checksum=cf17476d9c26a1da2295b18be174d698d96b7ae3ed9c13c8fc5cae3009b86780
+checksum=a2162afb892cdda45d17e3041d21c08249966372e5c8682e7e3183bda9c60245
 
 case "$XBPS_TARGET_MACHINE" in
         x86_64*|i686*|arm*|aarch64*) ;;
