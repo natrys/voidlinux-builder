@@ -13,20 +13,13 @@ fi
 
 export NPROCS=1
 if [ -r /proc/cpuinfo ]; then
-        NPROCS=$(grep ^proc /proc/cpuinfo|wc -l)
+        NPROCS=$(grep ^proc /proc/cpuinfo | wc -l)
 fi
 
 
 cd $GITHUB_WORKSPACE
 
 DOCKER_NAME=${DOCKER_NAME:-void}
-grep -o 'DOCKER_BASE.*' void/.travis.yml > /tmp/docker_masterdir
-grep -o 'TAG.*' void/.travis.yml | sed -e 's/^TAG/DOCKER_TAG/' >> /tmp/docker_masterdir
-. /tmp/docker_masterdir
-rm /tmp/docker_masterdir
-
-#DOCKER_IMAGE=${DOCKER_BASE}-${BOOTSTRAP}:${DOCKER_TAG}
-#DOCKER_IMAGE="ghcr.io/natrys/voidlinux:masterdir-${BOOTSTRAP}"
 DOCKER_IMAGE="ghcr.io/void-linux/void-buildroot-glibc:latest"
 
 /bin/echo -e "\x1b[32mPulling docker image $DOCKER_IMAGE...\x1b[0m"
