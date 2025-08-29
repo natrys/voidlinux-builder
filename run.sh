@@ -4,13 +4,9 @@ say() {
   /bin/echo -e "\x1b[32m$@\x1b[0m"
 }
 
-if [ "$BOOTSTRAP" != "$ARCH" ]; then
-	arch="-a $ARCH"
-fi
-
 export NPROCS=1
 if [ -r /proc/cpuinfo ]; then
-        NPROCS=$(grep ^proc /proc/cpuinfo | wc -l)
+        export NPROCS=$(grep ^proc /proc/cpuinfo | wc -l)
 fi
 
 cd $GITHUB_WORKSPACE
