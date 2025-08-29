@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd /hostrepo/
+cd $GITHUB_WORKSPACE
 
 void/xbps-src sort-dependencies $(cat /tmp/unsorted_packages) > /tmp/packages
 
@@ -17,7 +17,7 @@ cd void/
 
 while read package
 do
-  chroot-git restore common/hooks/
+  # git restore common/hooks/
   /bin/echo -e "\x1b[32mBuilding package: $package...\x1b[0m"
   
   [ -f srcpkgs/$package/hook ] && . srcpkgs/$package/hook
