@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=pgModeler
+GenericName=PostgreSQL Database Modeler
+Comment=Create and deploy PostgreSQL database models
+Exec=pgmodeler %f
+Icon=/usr/share/pgmodeler/conf/pgmodeler_logo.png
+Terminal=false
+Categories=Development;
+MimeType=application/dbm;

@@ -1,19 +1,29 @@
 # Template file for 'pgmodeler'
 pkgname=pgmodeler
-version=1.2.2
+version=2.0.0
 revision=1
-build_style=qmake
-configure_args="CONFIG+=release NO_UPDATE_CHECK=true pgmodeler.pro"
-hostmakedepends="pkg-config"
-makedepends="qt6-base-devel qt6-svg-devel qt6-tools-devel
- postgresql-libs-devel libxml2-devel"
+build_style=cmake
+configure_args="-DLINUX=ON -DCMAKE_BUILD_TYPE=Release -DNO_UPDATE_CHECK=ON
+ -DPGM_PREFIX=/usr
+ -DPGM_CONFDIR=/usr/share/pgmodeler/conf
+ -DPGM_LANGDIR=/usr/share/pgmodeler/lang
+ -DPGM_SAMPLESDIR=/usr/share/pgmodeler/samples
+ -DPGM_SCHEMASDIR=/usr/share/pgmodeler/schemas"
+hostmakedepends="qt6-tools qt6-base"
+makedepends="qt6-svg-devel qt6-tools-devel postgresql-libs-devel libxml2-devel"
 short_desc="Data Modeling Tool Designed for PostgreSQL"
 maintainer="Imran Khan <imran@khan.ovh>"
 license="GPL-3.0-or-later"
 homepage="https://www.pgmodeler.io/"
 distfiles="https://github.com/pgmodeler/pgmodeler/archive/v${version}.tar.gz"
-checksum=25c731eeb62bc372dfbd7b76638152c4f544e604182caa5bf6a0f9c74d659610
+checksum=db92e50adb43c007244da27f91b19118f8a8cb181fc5ae75a86d52adbfcfbbca
 
-if [ "$CROSS_BUILD" ]; then
-	hostmakedepends+=" qt6-host-tools qt6-base-devel"
-fi
+post_patch() {
+    vsed -i BuildConfs.cmake \
+        -e '/set(CMAKE_C_COMPILER \/usr\/bin\/clang)/d' \
+        -e '/set(CMAKE_CXX_COMPILER \/usr\/bin\/clang++)/d'
+}
+
+post_install() {
+    vinstall ${FILESDIR}/pgmodeler.desktop 644 usr/share/applications
+}
